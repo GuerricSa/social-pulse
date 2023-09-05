@@ -1,0 +1,18 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.tab {
+  padding: 8px;
+  margin: 8px;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+.tab.active {
+  opacity: 1;
+  border-bottom: 3px solid $saumon;
+}

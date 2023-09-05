@@ -1,16 +1,37 @@
-<div class="d-flex border-bottom pb-2">
-  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
-  <div class="user-info ms-2">
-    <h3><%= @user.first_name %></h3>
-    <p><%= @user.age %></p>
-    <p class="text-wrap"><i class="fa-solid fa-quote-left"></i> <%= @user.presentation %> <i class="fa-solid fa-quote-right"></i></p>
+<div data-controller="friends" data-friends-user-id-value=<%= @user.id %>>
+  <%# ce bloc contient la photo à gauche + nom, age et présentation à droite %>
+  <div class="d-flex pb-2">
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
+    <div class="user-info ms-2">
+      <h3><%= @user.first_name %></h3>
+      <p><%= @user.age %> ans</p>
+      <p class="text-wrap"><i class="fa-solid fa-quote-left"></i> <%= @user.presentation %> <i class="fa-solid fa-quote-right"></i></p>
+    </div>
   </div>
-</div>
-<div class="d-flex border-bottom pb-2">
-  Follow/unfollow ...... Signaler
-</div>
 
-<div>
-  activités proposées | activités auxquelles <%= @user.first_name %> participe
-  cards des activités 
+  <%# ce bloc contient 2 boutons : suivre et signaler %>
+  <div class="d-flex border-bottom pb-2 pt-2 justify-content-end">
+    <div id="follow-btn" data-action="click->friends#follow"
+        data-friends-target="followBtn">Suivre
+    </div>
+    <div id="report-btn" data-action="click->friends#report">
+      <i class="fa-solid fa-triangle-exclamation"></i> Signaler
+    </div>
+  </div>
+
+  <%# ce bloc contient les tabs pour passer des activités proposées aux autres %>
+  <div class="tabs pt-2">
+    <div class="tab active" data-action="click->friends#tab1" data-friends-target="tab1">Activités proposées</div>
+    <div class="tab" data-action="click->friends#tab2" data-friends-target="tab2">Participations</div>
+  </div>
+
+  <%# ce bloc contient les activités proposées par l'user %>
+  <div data-friends-target="tab1Content" class="">
+    <%= @user.first_name %> ne propose aucune activité en ce moment
+  </div>
+
+  <%# ce bloc contient les activités auxquelles l'user s'est inscrit %>
+  <div data-friends-target="tab2Content" class="d-none">
+    <%= @user.first_name %> ne participe à aucune activité
+  </div>
 </div>
