@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+# Faker for seeds of users and ovens
+gem 'faker'
+
 # Gives protection with authentication
 gem "pundit"
 
