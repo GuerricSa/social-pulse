@@ -1,12 +1,56 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+// Navbar mise en bottom
+nav {
+  margin-top: auto;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+// navbar complete
+.navbar-socialpulse {
+  background-color: rgba($color: #ffffffda, $alpha: 1.0);
+  border-top: 1px solid rgba(43, 43, 43, 0.404);
+  padding-top: 15px;
+
+
+  img{
+    padding: 0;
+    width: 96px;
+    height: 96px;
+    border-radius: 5px;
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+// ul navbar
+.nav-ul {
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 6.5vh;
+  margin: 0;
 }
+
+// Icons navbar
+.nav-item{
+  border-radius: 5px;
+}
+.nav-item .nav-link{
+  background-color: #aca1f0;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.31);
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 96px;
+  height: 96px;
+  font-size: 60px;
+  border: 1px rgba(0, 0, 0, 0.199) solid;
+}
+.nav-item .nav-link .nav-profile{
+  padding-right: 32px;
+}
+
+// le bouton ajout d'activité
+#nav-add{
+    width: 140px;
+    height: 140px;
+    transform:translateY(-25%)
+}
+
+
