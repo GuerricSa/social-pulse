@@ -1,0 +1,23 @@
+<%= link_to activity_path(activity) do %>
+  <div class="card-trip">
+
+      <% if activity.photos.size != 0 %>
+        <div class="card-img" style="background-image: url(<%= cl_image_path(activity.photos[0].key)%>)"></div>
+      <% else %>
+        <div class="card-img" style="background-image: url(<%= image_path "logo.png" %>)"></div>
+      <% end %>
+
+    <div class="card-trip-infos">
+      <div id="card-trip-title-adress">
+        <h2><%= activity.title %></h2>
+        <p><%= activity.address %></p>
+      </div>
+      <% if activity.user.avatar %>
+      <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered", crop: "fill", fetch_format: :auto %>
+      <% else %>
+      <div class="avatar-bordered" style="background-image: url(<%= image_path "cover.png" %>)"></div>
+      <% end %>
+    </div>
+
+  </div>
+<% end %>
