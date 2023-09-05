@@ -1,0 +1,14 @@
+.card-trip {
+  height: 30vh;
+  overflow: hidden;
+  border: 1px solid $saumon;
+}
+
+// Image partie supérieur de la card
+.card-img {
+  width: 100%;
+  height: 55%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
