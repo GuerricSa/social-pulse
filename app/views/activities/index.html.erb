@@ -1,0 +1,5 @@
+<div class="cards">
+  <% @activities.each do |activity| %>
+  <%= render "layouts/card_activity", activity: activity %>
+  <% end %>
+</div>
