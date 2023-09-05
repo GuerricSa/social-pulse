@@ -1,0 +1,16 @@
+<div class="d-flex border-bottom pb-2">
+  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier" %>
+  <div class="user-info ms-2">
+    <h3><%= @user.first_name %></h3>
+    <p><%= @user.age %></p>
+    <p class="text-wrap"><i class="fa-solid fa-quote-left"></i> <%= @user.presentation %> <i class="fa-solid fa-quote-right"></i></p>
+  </div>
+</div>
+<div class="d-flex border-bottom pb-2">
+  Follow/unfollow ...... Signaler
+</div>
+
+<div>
+  activités proposées | activités auxquelles <%= @user.first_name %> participe
+  cards des activités 
+</div>

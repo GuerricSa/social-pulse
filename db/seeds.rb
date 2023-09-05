@@ -9,6 +9,14 @@
 require 'faker'
 require "open-uri"
 
+USER_PRESENTATIONS = [
+  "Amoureuse de la nature, cherche des compagnons de randonnée pour explorer les sentiers pittoresques de sa région.",
+  "Passionné de cuisine, propose des ateliers de cuisine à domicile pour partager ses talents culinaires avec d'autres gourmets.",
+  "Fan de musique, recherche des partenaires de jam pour des sessions musicales improvisées dans son quartier.",
+  "Photographe amateur, organise des sorties photo pour capturer les plus beaux moments de la vie locale.",
+  "Sportive passionnée, cherche des coéquipiers pour des matchs de football amical le week-end."
+].freeze
+
 if User.all.size < 5
   puts "Creating 5 users..."
   5.times do
@@ -16,7 +24,8 @@ if User.all.size < 5
       email: Faker::Internet.email,
       first_name: Faker::Name.first_name,
       password: "123456",
-      age: (15..50).to_a.sample
+      age: (15..50).to_a.sample,
+      presentation: USER_PRESENTATIONS.sample
     )
     file = URI.open("https://source.unsplash.com/random/?avatar,face")
     user.avatar.attach(io: file, filename: "avatar#{user.id}.png", content_type: "image/png")
