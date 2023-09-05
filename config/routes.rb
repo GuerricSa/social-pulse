@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "/users/:id" => "users/sessions#show"
+    get "/my_account" => "users/sessions#account"
   end
 end

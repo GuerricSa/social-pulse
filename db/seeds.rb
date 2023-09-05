@@ -33,3 +33,19 @@ if User.all.size < 5
   end
   puts "Done!"
 end
+
+
+unless User.find_by(first_name: "Truc")
+  puts "Creating Truc"
+  truc = User.new(
+    email: "truc@gmail.com",
+    first_name: "Truc",
+    password: "123456",
+    age: 28,
+    presentation: "J'adore le surf, le ciné et boire des verres entre amis!"
+  )
+  file = URI.open("https://source.unsplash.com/random/?avatar,face")
+  truc.avatar.attach(io: file, filename: "avatar#{truc.id}.png", content_type: "image/png")
+  truc.save
+  puts "Truc is alive!"
+end

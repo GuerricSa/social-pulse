@@ -1,10 +1,11 @@
-<h2>Sign up</h2>
+<h2>Je crée un compte sur Social Pulse</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :first_name,
+                label: 'Prénom',
                 required: true,
                 autofocus: true %>
     <%= f.input :email,
@@ -13,21 +14,27 @@
                 input_html: { autocomplete: "email" }%>
     <%= f.input :age,
                 required: true,
+                collection: 15..100,
                 autofocus: true %>
-    <%= f.input :presentation %>
-    <%= f.input :avatar, as: :file %>
+    <%= f.input :presentation,
+                label: 'Présente-toi en quelques mots :' %>
+    <%= f.input :avatar, as: :file, label: 'Photo de profil' %>
     <%= f.input :password,
                 required: true,
+                label: 'Choisis un mot de passe',
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: true,
+                label: 'Confirme ton mot de passe',
                 input_html: { autocomplete: "new-password" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Créer mon compte", class: "purple-btn" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="mt-3">
+  <%= render "devise/shared/links" %>
+</div>
