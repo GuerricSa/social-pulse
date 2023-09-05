@@ -51,9 +51,6 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
-#faker gem for seeds
-gem 'faker'
-
 #cloudinary to store images
 gem 'cloudinary'
 
