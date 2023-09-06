@@ -1,11 +1,11 @@
 // Navbar
 nav {
-  height: 6.5vh; // Replace with the height your footer should be
+  height: 7vh; // Replace with the height your footer should be
   width: 100%; // Don't change
   background-color: white;
   background-position: 0% 0%;
   position: fixed;
-  bottom: 10pt;
+  bottom: 0pt;
   left: 0pt;
   border-top: 1px solid rgba(43, 43, 43, 0.404);
   padding-top: 15px;
@@ -49,7 +49,7 @@ nav {
 #nav-add{
     width: 140px;
     height: 140px;
-    transform:translateY(-25%)
+    transform:translateY(-30%)
 }
 
 

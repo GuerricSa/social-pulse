@@ -2,7 +2,16 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update]
 
   def index
-    @activities = Activity.all
+    @activities = policy_scope(Activity)
+    if params[:query].present?
+      @activities = Activity.search_by_title_and_content(params[:query])
+    else
+      @activities = Activity.all
+    end
+    
+    #   sql_subquery = "title ILIKE :query OR content ILIKE :query"
+    #   @activities = @activities.where(sql_subquery, query: "%#{params[:query]}%")
+    # end
   end
 
   def show

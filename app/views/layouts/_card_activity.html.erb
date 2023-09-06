@@ -13,7 +13,7 @@
         <p><%= activity.address %></p>
       </div>
       <% if activity.user.avatar %>
-      <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered", crop: "fill", fetch_format: :auto %>
+      <%# <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered", crop: "fill", fetch_format: :auto %> %>
       <% else %>
       <div class="avatar-bordered" style="background-image: url(<%= image_path "cover.png" %>)"></div>
       <% end %>
