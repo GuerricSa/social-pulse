@@ -1,15 +1,15 @@
-// Navbar mise en bottom
+// Navbar
 nav {
-  margin-top: auto;
-}
-
-// navbar complete
-.navbar-socialpulse {
-  background-color: rgba($color: #ffffffda, $alpha: 1.0);
+  height: 7vh; // Replace with the height your footer should be
+  width: 100%; // Don't change
+  background-color: white;
+  background-position: 0% 0%;
+  position: fixed;
+  bottom: 0pt;
+  left: 0pt;
   border-top: 1px solid rgba(43, 43, 43, 0.404);
   padding-top: 15px;
-
-
+  padding-bottom: 20px;
   img{
     padding: 0;
     width: 96px;
@@ -18,20 +18,21 @@ nav {
   }
 }
 
+
 // ul navbar
-.nav-ul {
-  padding-left: 16px;
-  padding-right: 16px;
-  height: 6.5vh;
-  margin: 0;
-}
+// .nav-ul {
+//   padding-left: 16px;
+//   padding-right: 16px;
+//   height: 6.5vh;
+//   margin: 0;
+// }
 
 // Icons navbar
 .nav-item{
   border-radius: 5px;
 }
 .nav-item .nav-link{
-  background-color: #aca1f0;
+  background-color: $parme;
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.31);
   border-radius: 7px;
   display: flex;
@@ -42,15 +43,13 @@ nav {
   font-size: 60px;
   border: 1px rgba(0, 0, 0, 0.199) solid;
 }
-.nav-item .nav-link .nav-profile{
-  padding-right: 32px;
-}
+
 
 // le bouton ajout d'activité
 #nav-add{
     width: 140px;
     height: 140px;
-    transform:translateY(-25%)
+    transform:translateY(-30%)
 }
 
 

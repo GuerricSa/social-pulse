@@ -2,11 +2,17 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update]
 
   def index
-    @activities = Activity.all
+    @activities = policy_scope(Activity)
+    if params[:query].present?
+      @activities = Activity.search_by_title_and_content(params[:query])
+    else
+      @activities = Activity.all
+    end
   end
 
   def show
     authorize @activity
+    @my_registration = Registration.find_by(user: current_user, activity: @activity)
   end
 
   def new
@@ -54,6 +60,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max)
+    params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max, :photo)
   end
 end

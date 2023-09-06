@@ -32,11 +32,9 @@
   </head>
 
   <body>
-    <%= render "shared/search" %>
     <%= render "shared/flashes" %>
-    <div class= "container">
-      <%= yield %>
-    </div>
+    <%= render "shared/search" %>
+    <%= yield %>
     <%= render "shared/navbar" %>
   </body>
 </html>

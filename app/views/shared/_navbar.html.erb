@@ -1,46 +1,74 @@
-<nav class="navbar-socialpulse">
-    <ul class="nav-ul d-flex justify-content-between">
+<nav class="#">
+    <ul class="nav-ul justify-content-around d-flex ms-4 me-4 align-items-center">
 
-    <li class="nav-item">
-    <%= link_to "#", class:"nav-link" do %>
-        <%= image_tag "logo.png" %>
-    <% end %>
-    </li>
-    <% if user_signed_in? %>
-
-        <li class="nav-item">
-        <%= link_to "#", class: "nav-link" do %>
-            <i class="fa-solid fa-heart" style="color: #ffffff;"></i>
-        <% end %>
+        <%# LOGO SOCIAL PULSE %>
+        <li class="nav-item mb-5 ">
+            <%= link_to "#", class:"nav-link" do %>
+                <%= image_tag "logo.png" %>
+            <% end %>
         </li>
 
-        <li class="nav-item">
-        <%= link_to "#", class: "nav-link rounded-circle", id:"nav-add" do %>
-            <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
-        <% end %>
-            
+
+        <%# AJOUT FAVORIS %>
+        <li class="nav-item mb-5">
+            <%= link_to "#", class: "nav-link" do %>
+                <i class="fa-solid fa-heart" style="color: #ffffff;"></i>
+            <% end %>
         </li>
 
-        <li class="nav-item">
-        <%= link_to "#", class: "nav-link" do %>
-            <i class="fa-regular fa-comment-dots" style="color: #ffffff;"></i>
-        <% end %>
+        <%# AJOUT ACTIVITE %>
+        <li class="nav-item ">
+            <%= link_to "#", class: "nav-link rounded-circle", id:"nav-add" do %>
+                <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+            <% end %>   
         </li>
 
-        <li class="nav-item dropdown nav-profile">
-        <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-        </a>
-        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%= link_to "Mon Profile", "#", class: "dropdown-item" %>
-            <%= link_to "Mes Activités", "#", class: "dropdown-item" %>
-            <%= link_to "Me Déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-        </div>
+        <%# MESSAGES %>
+        <li class="nav-item mb-5 ">
+            <%= link_to "#", class: "nav-link" do %>
+                <i class="fa-regular fa-comment-dots" style="color: #ffffff;"></i>
+            <% end %>
         </li>
+
+        <%# LOGO PROFILE %>
+        <% if user_signed_in?%>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <li class="nav-item mb-5 nav-profile">
+                <a href="#" class="avatar" aria-haspopup="true" aria-expanded="false">
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "Profil menu" %>
+                </a>
+                </li>
+            </button>
 
         <% else %>
-            <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <li class="nav-item mb-5">
+                <%= link_to new_user_session_path, class: "nav-link" do %>
+                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                <% end %>
             </li>
         <% end %>
-    </nav>
+    </ul>
+    
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+            <%= link_to "#", class:"burger-logo" do %>
+                <%= image_tag "logo.png" %>
+            <% end %>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

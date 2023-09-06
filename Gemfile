@@ -86,3 +86,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# pg search pour la searchbar
+gem "pg_search"

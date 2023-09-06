@@ -1,9 +1,10 @@
 class Activity < ApplicationRecord
   TYPE = ["Sport", "Musique", "Cuisine", "Art", "Lecture", "Voyage", "Jardinage", "Jeux de société", "Randonnée", "Camping", "Théâtre", "Danse", "Photographie", "Bricolage", "Écriture", "Méditation", "Natation", "Cinéma", "Équitation", "Astronomie"]
   belongs_to :user
+  has_many :registrations, dependent: :destroy
 
   # Cloudinary
-  has_many_attached :photos
+  has_one_attached :photo
 
   validates :title, presence: true
   validates :content, presence: true
@@ -11,4 +12,12 @@ class Activity < ApplicationRecord
   validates :address, presence: true
   validates :city, presence: true
   validates :activity_type, inclusion: { in: TYPE }
+  
+  #PG Search 
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_content,
+  against: [ :title, :content ],
+  using: {
+    tsearch: { prefix: true }
+  }
 end

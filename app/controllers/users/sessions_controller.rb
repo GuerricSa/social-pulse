@@ -25,7 +25,32 @@ class Users::SessionsController < Devise::SessionsController
   def account
     @user = current_user
   end
-  
+
+  def edit_age
+    @user = current_user
+    render 'devise/registrations/edit_age'
+  end
+
+  def edit_first_name
+    @user = current_user
+    render 'devise/registrations/edit_first_name'
+  end
+
+  def edit_presentation
+    @user = current_user
+    render 'devise/registrations/edit_presentation'
+  end
+
+  def edit_avatar
+    @user = current_user
+    render 'devise/registrations/edit_avatar'
+  end
+
+  def edit_password
+    @user = current_user
+    render 'devise/registrations/edit_password'
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
