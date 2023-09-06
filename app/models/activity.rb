@@ -1,6 +1,7 @@
 class Activity < ApplicationRecord
   TYPE = ["Sport", "Musique", "Cuisine", "Art", "Lecture", "Voyage", "Jardinage", "Jeux de société", "Randonnée", "Camping", "Théâtre", "Danse", "Photographie", "Bricolage", "Écriture", "Méditation", "Natation", "Cinéma", "Équitation", "Astronomie"]
   belongs_to :user
+  has_many :registrations, dependent: :destroy
 
   # Cloudinary
   has_one_attached :photo

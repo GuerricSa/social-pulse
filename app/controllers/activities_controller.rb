@@ -7,6 +7,7 @@ class ActivitiesController < ApplicationController
 
   def show
     authorize @activity
+    @my_registration = Registration.find_by(user: current_user, activity: @activity)
   end
 
   def new

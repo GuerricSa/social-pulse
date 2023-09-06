@@ -1,3 +1,11 @@
 <div class="cards">
   <%= render "layouts/card_show", activity: @activity %>
 </div>
+
+<%# ce code permet de créer le bouton "Je participe", si on est déjà inscrit, on peut supprimer notre participation %>
+<% if @my_registration %>
+  Je suis déjà inscrit(e) à cette activité !
+  <%= link_to "J'annule ma participation", registration_path(@my_registration), data: { turbo_method: :delete, turbo_confirm: "Tu confirmes l'annulation de ta participation ?" } %>
+<% else %>
+  <%= link_to "Je participe", activity_registrations_path(@activity), data: { turbo_method: :post } %>
+<% end %>

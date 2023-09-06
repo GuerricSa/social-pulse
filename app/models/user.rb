@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :activities, dependent: :destroy
+  has_many :registrations, dependent: :destroy
 
   validates :first_name, :age, :email, :password, presence: true
   validates :age, numericality: { only_integer: true, in: 15..100 }
