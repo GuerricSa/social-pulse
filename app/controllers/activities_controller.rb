@@ -2,7 +2,12 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update]
 
   def index
-    @activities = Activity.includes(:user).all
+    @activities = policy_scope(Activity)
+    if params[:query].present?
+      @activities = Activity.search_by_title_and_content(params[:query])
+    else
+      @activities = Activity.all
+    end
   end
 
   def show

@@ -15,9 +15,9 @@
       <p><i class="fa-solid fa-location-dot" style="color: #614BF2;"></i> : <%= activity.address %>, <%= activity.city %></p>
       <p class="card-date"><i class="fa-regular fa-calendar" style="color: #614BF2;"></i> : <%= activity.date.strftime("%A %d %B %Y à %H:%M") %></p>
       <% if activity.user.avatar %>
-      <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill", fetch_format: :auto %>
+        <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill", fetch_format: :auto %>
       <% else %>
-      <div class="avatar-bordered" style="background-image: url(<%= image_path "cover.png" %>)"></div>
+        <div class="avatar-bordered" style="background-image: url(<%= image_path "cover.png" %>)"></div>
       <% end %>
     </div>
   <% end %>

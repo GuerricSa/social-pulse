@@ -1,4 +1,17 @@
+
 .searchbar{
-  background-color: #aca1f0;
-  width: 800px;
+width: 100%;
 }
+
+.form-searchbar{
+  position: relative;
+  height: 90px;
+}
+
+.icon-filter{
+  position: absolute; 
+  right: 22px;
+  bottom: 22px;
+  font-size: 45px;
+}
+

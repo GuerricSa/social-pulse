@@ -12,4 +12,12 @@ class Activity < ApplicationRecord
   validates :address, presence: true
   validates :city, presence: true
   validates :activity_type, inclusion: { in: TYPE }
+  
+  #PG Search 
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_content,
+  against: [ :title, :content ],
+  using: {
+    tsearch: { prefix: true }
+  }
 end
