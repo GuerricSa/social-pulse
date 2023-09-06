@@ -1,11 +1,11 @@
-<div class="row justify-content-center">
-  <div class="col-sm-8 my-3 ">
-    <%= form_with url: root_path, method: :get, class: "d-flex searchbar" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Rechercher une activité"
-        %>
-    <% end %>
-  </div>
+<div class=" searchbar justify-content-center  mt-1">
+  <%= form_with url: root_path, method: :get, class: "d-flex form-searchbar ms-4 me-4 " do %>
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control bg-primary rounded-pill ",
+          placeholder: raw("&#xf002;"),
+          style: "font-family: 'FontAwesome';"
+    %>
+    <i class="fa-solid fa-filter icon-filter" style="color: white;"></i>
+  <% end %>
 </div>
