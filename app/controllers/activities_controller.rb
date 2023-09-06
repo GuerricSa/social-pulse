@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update]
 
   def index
-    @activities = Activity.all
+    @activities = Activity.includes(:user).all
   end
 
   def show
@@ -55,6 +55,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max)
+    params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max, :photo)
   end
 end

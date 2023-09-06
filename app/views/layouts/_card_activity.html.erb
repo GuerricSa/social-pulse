@@ -1,23 +1,25 @@
-<%= link_to activity_path(activity) do %>
-  <div class="card-trip">
-
-      <% if activity.photos.size != 0 %>
-        <div class="card-img" style="background-image: url(<%= cl_image_path(activity.photos[0].key)%>)"></div>
-      <% else %>
-        <div class="card-img" style="background-image: url(<%= image_path "logo.png" %>)"></div>
-      <% end %>
-
-    <div class="card-trip-infos">
-      <div id="card-trip-title-adress">
-        <h2><%= activity.title %></h2>
-        <p><%= activity.address %></p>
+<div class="card">
+  <%= link_to activity_path(activity), class: "card-activity-link" do %>
+    <% if activity.photo.present? %>
+      <div class="card-img" style="background-image: url(<%= cl_image_path(activity.photo.key)%>)">
+        <i class="fa-regular fa-heart fa-3x" style="color: #614BF2;"></i>
       </div>
+    <% else %>
+      <div class="card-img" style="background-image: url(<%= image_path "logo.png" %>)">
+        <i class="fa-regular fa-heart fa-3x" style="color: #614BF2;"></i>
+      </div>
+    <% end %>
+
+    <div class="card-bottom">
+      <h2 class="title-card"><%= activity.title %></h2>
+      <p><i class="fa-solid fa-location-dot" style="color: #614BF2;"></i> : <%= activity.address %>, <%= activity.city %></p>
+      <p class="card-date"><i class="fa-regular fa-calendar" style="color: #614BF2;"></i> : <%= activity.date.strftime("%A %d %B %Y à %H:%M") %></p>
       <% if activity.user.avatar %>
-      <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered", crop: "fill", fetch_format: :auto %>
+      <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill", fetch_format: :auto %>
       <% else %>
       <div class="avatar-bordered" style="background-image: url(<%= image_path "cover.png" %>)"></div>
       <% end %>
     </div>
+  <% end %>
 
-  </div>
-<% end %>
+</div>

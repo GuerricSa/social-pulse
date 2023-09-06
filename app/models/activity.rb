@@ -4,7 +4,7 @@ class Activity < ApplicationRecord
   has_many :registrations, dependent: :destroy
 
   # Cloudinary
-  has_many_attached :photos
+  has_one_attached :photo
 
   validates :title, presence: true
   validates :content, presence: true
