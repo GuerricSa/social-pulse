@@ -112,7 +112,7 @@ if Activity.all.length < 10
     activity = Activity.new(
       title: Faker::Hobby.activity,
       content: Faker::Lorem.sentence(word_count: rand(20..40)),
-      date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 43_200),
+      date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90),
       duration: rand(1..6),
       city: CITIES.sample,
       participants_max: rand(2..8),
@@ -121,6 +121,8 @@ if Activity.all.length < 10
     )
     activity.address = address_activities(activity.city)
     activity.user = User.all.sample
+    file_picture = URI.open("https://source.unsplash.com/random/?activity")
+    activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
     activity.save!
   end
 end
