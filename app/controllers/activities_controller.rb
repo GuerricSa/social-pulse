@@ -8,23 +8,22 @@ class ActivitiesController < ApplicationController
     else
       @activities = Activity.all
     end
-    
-    #   sql_subquery = "title ILIKE :query OR content ILIKE :query"
-    #   @activities = @activities.where(sql_subquery, query: "%#{params[:query]}%")
-    # end
   end
 
   def show
+    authorize @activity
+    @my_registration = Registration.find_by(user: current_user, activity: @activity)
   end
 
   def new
     @activity = Activity.new
+    authorize @activity
   end
 
   def create
-    @user = current_user
     @activity = Activity.new(activity_params)
-    @activity.user = @user
+    @activity.user = current_user
+    authorize @activity
     if @activity.save
       redirect_to activity_path(@activity)
     else
@@ -61,6 +60,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max)
+    params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max, :photo)
   end
 end

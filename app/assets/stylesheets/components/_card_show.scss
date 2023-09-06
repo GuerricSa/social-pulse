@@ -1,0 +1,79 @@
+.show-card {
+  width: 90vw;
+  height: 80vh;
+  border: 10px solid $saumon;
+  border-radius: 15px;
+  overflow: hidden;
+  border-radius: 50px;
+}
+
+.show-card-top {
+  width: 100%;
+  height: 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.show-card-top .card-img {
+  position: relative;
+  height: 100%;
+}
+
+.show-card-top i {
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.show-card-top h1 {
+  color: white;
+  font-size: 70px;
+  letter-spacing: 5px;
+  text-align: end;
+  padding-bottom: 15px;
+  padding-right: 15px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.show-card-bottom {
+  height: 70%;
+}
+
+.show-card-bottom p {
+  font-size: 40px;
+}
+
+.show-card-bottom-user, .show-card-bottom-date, .show-card-bottom-place {
+  display: flex;
+  align-items: center;
+  height: 15%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  border-bottom: 0.5px solid $saumon;
+}
+
+.show-card-bottom-user p, .show-card-bottom-date p, .show-card-bottom-place p {
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+
+.show-card-bottom-user p {
+  padding-left: 60px;
+}
+
+.show-card-bottom-date i, .show-card-bottom-place i {
+  width: 15%;
+  height: 100%;
+}
+
+.show-card-bottom-content {
+  height: 25%;
+  padding: 25px;
+  border-bottom: 0.5px solid $saumon;
+}
+
+.show-card-bottom-content p {
+  font-size: 30px;
+}

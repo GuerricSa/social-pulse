@@ -34,7 +34,6 @@ if User.all.size < 5
   puts "Done!"
 end
 
-
 unless User.find_by(first_name: "Truc")
   puts "Creating Truc"
   truc = User.new(
@@ -49,7 +48,6 @@ unless User.find_by(first_name: "Truc")
   truc.save
   puts "Truc is alive!"
 end
-
 
 TYPES = ["Sport", "Musique", "Cuisine", "Art", "Lecture", "Voyage", "Jardinage", "Jeux de société", "Randonnée", "Camping", "Théâtre", "Danse", "Photographie", "Bricolage", "Écriture", "Méditation", "Natation", "Cinéma", "Équitation", "Astronomie"]
 
@@ -105,25 +103,37 @@ def address_activities(city)
   end
 end
 
-
 # loop for activities
-puts "Creating activities"
 if Activity.all.length < 10
+  puts "Creating activities"
   (10 - Activity.all.length).times do
     activity = Activity.new(
       title: Faker::Hobby.activity,
       content: Faker::Lorem.sentence(word_count: rand(20..40)),
-      date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 43_200),
+      date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90),
       duration: rand(1..6),
       city: CITIES.sample,
       participants_max: rand(2..8),
       cancelled: false,
-      activity_type: TYPES.sample,
-      # A modifier lorsque'on groupera les seed
+      activity_type: TYPES.sample
     )
     activity.address = address_activities(activity.city)
     activity.user = User.all.sample
+    file_picture = URI.open("https://source.unsplash.com/random/?activity")
+    activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
     activity.save!
   end
+  puts "Activities created"
 end
-puts "Activities created"
+
+if Registration.all.size < 20
+  puts "Creating registrations..."
+  Registration.destroy_all
+  User.all.each do |user|
+    reg = Registration.new
+    reg.user = user
+    reg.activity = Activity.all.sample
+    reg.save!
+  end
+  puts "All finished!"
+end

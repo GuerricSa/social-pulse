@@ -1,14 +1,58 @@
-.card-trip {
-  height: 30vh;
+.card {
+  height: 800px;
+  width: 740px;
+  margin-top: 40px;
+  margin-bottom: 20px;
   overflow: hidden;
   border: 1px solid $saumon;
+  // position: relative;
+  // z-index: 1;
+  box-shadow: 4px 4px 4px 0px #00000016;
+  border-radius: 10px;
 }
 
-// Image partie supérieur de la card
-.card-img {
+//partie supérieur de la card
+.card-activity-link {
+  // position: absolute;
+  // z-index: -1;
+  // inset: 0;
+  height: 100%;
+}
+
+.card .card-img {
   width: 100%;
-  height: 55%;
+  height: 60%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
+}
+
+.fa-heart {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+
+//partie inférieur de la card
+.card-bottom {
+  position: relative;
+  height: 40%;
+  padding-top: 5%;
+  padding-left: 5%;
+}
+
+.title-card {
+  width: 100%;
+  padding-bottom: 5%;
+  letter-spacing: 3px;
+  font-size: 60px;
+}
+
+.card-bottom p {
+  font-size: 30px;
+}
+
+.card-date {
+  padding-top: 20px;
 }
