@@ -6,16 +6,18 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    authorize @activity
   end
 
   def new
     @activity = Activity.new
+    authorize @activity
   end
 
   def create
-    @user = current_user
     @activity = Activity.new(activity_params)
-    @activity.user = @user
+    @activity.user = current_user
+    authorize @activity
     if @activity.save
       redirect_to activity_path(@activity)
     else
