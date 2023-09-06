@@ -34,7 +34,6 @@ if User.all.size < 5
   puts "Done!"
 end
 
-
 unless User.find_by(first_name: "Truc")
   puts "Creating Truc"
   truc = User.new(
@@ -49,7 +48,6 @@ unless User.find_by(first_name: "Truc")
   truc.save
   puts "Truc is alive!"
 end
-
 
 TYPES = ["Sport", "Musique", "Cuisine", "Art", "Lecture", "Voyage", "Jardinage", "Jeux de société", "Randonnée", "Camping", "Théâtre", "Danse", "Photographie", "Bricolage", "Écriture", "Méditation", "Natation", "Cinéma", "Équitation", "Astronomie"]
 
@@ -106,8 +104,8 @@ def address_activities(city)
 end
 
 # loop for activities
-puts "Creating activities"
 if Activity.all.length < 10
+  puts "Creating activities"
   (10 - Activity.all.length).times do
     activity = Activity.new(
       title: Faker::Hobby.activity,
@@ -123,5 +121,17 @@ if Activity.all.length < 10
     activity.user = User.all.sample
     activity.save!
   end
+  puts "Activities created"
 end
-puts "Activities created"
+
+if Registration.all.size < 20
+  puts "Creating registrations..."
+  Registration.destroy_all
+  User.all.each do |user|
+    reg = Registration.new
+    reg.user = user
+    reg.activity = Activity.all.sample
+    reg.save!
+  end
+  puts "All finished!"
+end
