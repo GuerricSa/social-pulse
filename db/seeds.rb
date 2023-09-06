@@ -105,7 +105,6 @@ def address_activities(city)
   end
 end
 
-
 # loop for activities
 puts "Creating activities"
 if Activity.all.length < 10
@@ -118,8 +117,7 @@ if Activity.all.length < 10
       city: CITIES.sample,
       participants_max: rand(2..8),
       cancelled: false,
-      activity_type: TYPES.sample,
-      # A modifier lorsque'on groupera les seed
+      activity_type: TYPES.sample
     )
     activity.address = address_activities(activity.city)
     activity.user = User.all.sample

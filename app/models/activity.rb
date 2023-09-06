@@ -5,7 +5,6 @@ class Activity < ApplicationRecord
   # Cloudinary
   has_many_attached :photos
 
-  validates_associated :user
   validates :title, presence: true
   validates :content, presence: true
   validates :date, presence: true, uniqueness: { scope: :user }
