@@ -49,8 +49,6 @@ unless User.find_by(first_name: "Truc")
   puts "Truc is alive!"
 end
 
-TYPES = ["Sport", "Musique", "Cuisine", "Art", "Lecture", "Voyage", "Jardinage", "Jeux de société", "Randonnée", "Camping", "Théâtre", "Danse", "Photographie", "Bricolage", "Écriture", "Méditation", "Natation", "Cinéma", "Équitation", "Astronomie"]
-
 CITIES = %i[Paris Lyon Lille Rennes Strasbourg].freeze
 
 PARIS = [
@@ -113,10 +111,10 @@ if Activity.all.length < 10
       date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90),
       duration: rand(1..6),
       city: CITIES.sample,
-      participants_max: rand(2..8),
       cancelled: false,
-      activity_type: TYPES.sample
+      activity_type: Activity::TYPE.sample
     )
+    activity.participants_max = rand(2..8) if activity.title.size > 8
     activity.address = address_activities(activity.city)
     activity.user = User.all.sample
     file_picture = URI.open("https://source.unsplash.com/random/?activity")

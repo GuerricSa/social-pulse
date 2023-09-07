@@ -24,7 +24,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.user = current_user
     authorize @activity
-    if @activity.save
+    if @activity.save!
       redirect_to activity_path(@activity)
     else
       render :new
@@ -60,6 +60,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max, :photo)
+    params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max, :activity_type, :photo)
   end
 end
