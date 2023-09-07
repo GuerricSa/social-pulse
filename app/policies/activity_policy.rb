@@ -5,7 +5,7 @@ class ActivityPolicy < ApplicationPolicy
       scope.all
     end
   end
-  
+
   def show?
     true
   end
@@ -19,6 +19,10 @@ class ActivityPolicy < ApplicationPolicy
   end
 
   def destroy?
+    true
+  end
+
+  def toggle_favorite?
     true
   end
 end

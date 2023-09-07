@@ -2,7 +2,7 @@
 
   <div class="show-card-top">
     <div class="card-img" style="background-image: url(<%= cl_image_path(@activity.photo.key)%>)">
-      <%= link_to activities_path do %>
+      <%= link_to :back do %>
         <i class="fa-solid fa-chevron-left fa-5x" style="color: #614BF2;"></i>
       <% end %>
       <h1><%= @activity.title %></h1>
@@ -12,27 +12,48 @@
   <div class="show-card-bottom">
 
     <div class="show-card-bottom-user">
-      <%= cl_image_tag @activity.user.avatar.key, class: "avatar-bordered", crop: "fill", fetch_format: :auto %>
+      <%= link_to user_path(current_user) do %>
+      <%= cl_image_tag @activity.user.avatar.key, class: "avatar-bordered", crop: "fill" %>
+      <% end %>
       <p><%= @activity.user.first_name %></p>
     </div>
 
     <div class="show-card-bottom-date">
     <i class="fa-regular fa-calendar fa-5x" style="color: #614BF2;"></i>
-    <p><%= activity.date.strftime("%a. %d/%m à %Hh%M") %></p>
+    <p><%= @activity.date.strftime("%a. %d/%m à %Hh%M") %></p>
     </div>
 
     <div class="show-card-bottom-place">
       <i class="fa-solid fa-location-dot fa-5x" style="color: #614BF2;"></i>
-      <p><%= activity.address %> - <%= activity.city %></p>
+      <p><%= @activity.address %> - <%= @activity.city %></p>
     </div>
 
     <div class="show-card-bottom-content">
-      <p><%= activity.content %></p>
+      <p><%= @activity.content %></p>
     </div>
 
-    <div class="show-card-bottom-participante">
-      <%# à faire quand on aura les registrations %>
+    <div class="show-card-bottom-participants">
+      <div class="show-card-bottom-participants-view">
+        <p><%= @activity.registrations.size + 1 %> participants</p>
+        <%= cl_image_tag @activity.user.avatar.key, class: "avatar-bordered", crop: "fill"%>
+        <% @activity.registrations.each do |registration| %>
+          <%= cl_image_tag registration.user.avatar.key, class: "avatar-bordered", crop: "fill"%>
+        <% end %>
+      </div>
+      <div class="show-card-bottom-participants-actions">
+        <i class="fa-regular fa-heart fa-5x" style="color: #F28080;"></i>
+        <%= render "layouts/btn_inscription" %>
+      </div>
     </div>
   </div>
 
 </div>
+
+<%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
+<%= link_to toggle_favorite_activity_path(@activity), remote: true, data: {
+  turbo_method: :post,
+  controller: "favorites",
+  action: "click->favorites#toggleColor"
+  } do %>
+  <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(@activity) ? 'fa-solid' : 'fa-regular' %> fa-heart"></i>
+<% end %>

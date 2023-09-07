@@ -1,8 +1,19 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: %i[show edit update]
+  before_action :set_activity, only: %i[show edit update toggle_favorite]
 
   def index
     @activities = policy_scope(Activity)
+
+    # Pour Geocode / MapBox
+    @markers = @activities.geocoded.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { activity: activity }),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
+    
     if params[:query].present?
       @activities = Activity.search_by_title_and_content(params[:query])
     else
@@ -24,7 +35,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.user = current_user
     authorize @activity
-    if @activity.save
+    if @activity.save!
       redirect_to activity_path(@activity)
     else
       render :new
@@ -40,6 +51,15 @@ class ActivitiesController < ApplicationController
 
   def my_activities
     @activities = Activities.where(user: current_user)
+  end
+
+  def toggle_favorite
+    authorize @activity
+    if current_user.favorited?(@activity)
+      current_user.unfavorite(@activity)
+    else
+      current_user.favorite(@activity)
+    end
   end
 
   # def duplicate
@@ -60,6 +80,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max, :photo)
+    params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max, :activity_type, :photo)
   end
 end

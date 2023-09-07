@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+# Gem to handle favorites (activities and users)
+gem 'acts_as_favoritor'
+
+# For pluralize words if needed [https://github.com/stewart/plural]
+gem 'plural'
+
 # Faker for seeds of users and ovens
 gem 'faker'
 
@@ -54,6 +60,9 @@ gem "sassc-rails"
 #cloudinary to store images
 gem 'cloudinary'
 
+# Geocoder for MapBox
+gem "geocoder"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -89,6 +98,3 @@ end
 
 # pg search pour la searchbar
 gem "pg_search"
-
-# JQuery pour la sidebar
-# gem 'jquery-rails'
