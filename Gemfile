@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+# For pluralize words if needed [https://github.com/stewart/plural]
+gem 'plural'
+
 # Faker for seeds of users and ovens
 gem 'faker'
 
