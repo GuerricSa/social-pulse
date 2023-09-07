@@ -35,3 +35,13 @@
     <%= @user.first_name %> ne participe à aucune activité
   </div>
 </div>
+
+
+<%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
+<%= link_to toggle_favorite_user_path(@user), remote: true, data: {
+  turbo_method: :post,
+  controller: "favorites",
+  action: "click->favorites#toggleColor"
+  } do %>
+  <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(@user) ? 'fa-solid' : 'fa-regular' %> fa-heart"></i>
+<% end %>
