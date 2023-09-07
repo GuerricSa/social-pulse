@@ -23,7 +23,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 40%;
+  width: 100%;
 }
 
 // Modification des Li
@@ -45,7 +45,7 @@
   padding: 5px;
   border-radius: 10px;
   margin: 10px;
-  
+
 }
 .text-sidebar:hover{
   background-color:$violet;
@@ -57,7 +57,7 @@
 .logo-sidebar{
   width: 60px;
   height: 60px;
-  
+
 }
 
 // Modification sur l'avatar

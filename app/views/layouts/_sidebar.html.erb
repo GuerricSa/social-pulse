@@ -2,7 +2,7 @@
 <div class="background-sidebar d-none" data-sidebar-target="background"data-action="click->sidebar#close" >
 </div>
 <div class="sidebar" data-sidebar-target="bar">
-  
+
     <ul>
       <li class=" p-3 mb-5">
         <%= link_to root_path do %>
@@ -17,9 +17,9 @@
           </a>
         <% end %>
       </li>
-
-      <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mon profil", 'user_path(current_user)', class: "text-sidebar" %></li>
-
+      <% if current_user %>
+        <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mon profil", user_path(current_user), class: "text-sidebar" %></li>
+      <% end %>
       <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mes notifications", edit_user_registration_path , class: "text-sidebar" %></li>
 
       <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mes amis", edit_user_registration_path , class: "text-sidebar" %></li>
@@ -28,7 +28,7 @@
 
       <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mon compte", my_account_path , class: "text-sidebar" %></li>
 
-      <li class="sidebar-item mt-5 ms-5 me-5 d-flex  align-items-center"><%= link_to "Me déconnecter", destroy_user_session_path , class: "text-sidebar" %></li>
+      <li class="sidebar-item mt-5 ms-5 me-5 d-flex  align-items-center"><%= link_to "Me déconnecter", destroy_user_session_path , class: "text-sidebar", data: { turbo_method: :delete } %></li>
     </ul>
 
 
