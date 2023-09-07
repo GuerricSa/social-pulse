@@ -21,5 +21,8 @@ Rails.application.routes.draw do
   end
 
   get "activities/my_activities", to: "activities#my_activities", as: :my_activities
+
   resources :registrations, only: :destroy
+
+  resources :favorites, only: :index
 end

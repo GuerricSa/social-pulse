@@ -1,0 +1,30 @@
+<h1 class="activities-h1">Mes favoris</h1>
+
+<div data-controller="favorites">
+
+  <%# ce bloc contient les tabs pour passer des activités proposées aux autres %>
+  <div class="tabs pt-2">
+    <div class="tab active" data-action="click->favorites#tab1" data-favorites-target="tab1">Activités</div>
+    <div class="tab" data-action="click->favorites#tab2" data-favorites-target="tab2">Utilisateurs</div>
+  </div>
+
+  <%# ce bloc contient les activités favorites de l'user connecté %>
+  <div data-favorites-target="tab1Content" class="">
+    <div class="cards">
+      <% @activities.each do |activity| %>
+        <%= render "layouts/card_activity", activity: activity %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# ce bloc contient les personnes favorites de l'user connecté %>
+  <div data-favorites-target="tab2Content" class="d-none">
+    <div class="cards">
+      <% @users.each do |user| %>
+        <%# il faut créer une partiale lorsqu'on affiche la show de l'utilisateur pour l'insérer ici %>
+        <%= user.first_name %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
