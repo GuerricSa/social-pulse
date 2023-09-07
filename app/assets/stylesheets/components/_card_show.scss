@@ -74,6 +74,37 @@
   border-bottom: 0.5px solid $saumon;
 }
 
-.show-card-bottom-content p {
+.show-card-bottom-content p, .show-card-bottom-participants p {
   font-size: 30px;
+}
+
+.show-card-bottom-participants {
+  height: 30%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.show-card-bottom-participants-view {
+  height: 50%;
+}
+
+.show-card-bottom-participants-actions {
+  height: 50%;
+  padding-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-around;
+}
+
+.show-card-bottom-participants-actions a, .show-card-bottom-participants-actions i {
+  margin: auto;
+}
+
+.show-card-bottom-participants-actions a {
+  grid-column: 2 / 5;
+}
+
+.show-card-bottom-participants-actions i {
+  grid-column: 1;
 }

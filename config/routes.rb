@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "activities#index"
 
   devise_scope :user do
-    get "/users/:id" => "users/sessions#show"
+    get "/users/:id" => "users/sessions#show", as: :user
     get "/my_account" => "users/sessions#account"
     get '/edit_age' => "users/sessions#edit_age"
     get '/edit_first_name' => "users/sessions#edit_first_name"
