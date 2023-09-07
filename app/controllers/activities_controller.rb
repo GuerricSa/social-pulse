@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update toggle_favorite]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @activities = policy_scope(Activity)
@@ -55,10 +56,14 @@ class ActivitiesController < ApplicationController
 
   def toggle_favorite
     authorize @activity
-    if current_user.favorited?(@activity)
-      current_user.unfavorite(@activity)
+    if current_user
+      if current_user.favorited?(@activity)
+        current_user.unfavorite(@activity)
+      else
+        current_user.favorite(@activity)
+      end
     else
-      current_user.favorite(@activity)
+      redirect_to new_user_session_path
     end
   end
 

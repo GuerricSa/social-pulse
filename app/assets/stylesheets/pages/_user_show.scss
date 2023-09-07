@@ -1,17 +1,8 @@
-// pour afficher l'avatar sur la page de profil de chaque utilisateur
-#user-show-avatar {
-  background-size: cover;
-  background-position: center;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 100%;
-  height: 0;
-  padding-top: 100%;
-}
 
 #user-show {
+  width: 100%;
+  padding: 50px;
+
   h3 {
     font-size: 40px;
   }
@@ -19,6 +10,18 @@
   p {
     font-size: 30px;
   }
+}
+// pour afficher l'avatar sur la page de profil de chaque utilisateur
+#user-show-avatar {
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
 }
 
 .name-age-user {
