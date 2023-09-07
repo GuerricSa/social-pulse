@@ -18,21 +18,11 @@ nav {
   }
 }
 
-
-// ul navbar
-// .nav-ul {
-//   padding-left: 16px;
-//   padding-right: 16px;
-//   height: 6.5vh;
-//   margin: 0;
-// }
-
 // Icons navbar
 .nav-item{
   border-radius: 5px;
 }
 .nav-item .nav-link{
-  background-color: $parme;
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.31);
   border-radius: 7px;
   display: flex;
@@ -40,16 +30,20 @@ nav {
   align-items: center;
   width: 96px;
   height: 96px;
-  font-size: 60px;
-  border: 1px rgba(0, 0, 0, 0.199) solid;
 }
 
-
+// .avatar{
+//   crop: fill;
+// }
 // le bouton ajout d'activité
 #nav-add{
+  width: 140px;
+  height: 140px;
+  transform:translateY(-30%)
+}
+#nav-add img{
     width: 140px;
     height: 140px;
-    transform:translateY(-30%)
 }
 
 
