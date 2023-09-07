@@ -1,10 +1,11 @@
+<div data-controller="sidebar" >
 <nav class="#">
     <ul class="nav-ul justify-content-around d-flex ms-4 me-4 align-items-center">
 
         <%# LOGO SOCIAL PULSE %>
         <li class="nav-item mb-5 ">
-            <%= link_to "#", class:"nav-link" do %>
-                <%= image_tag "logo.png" %>
+            <%= link_to root_path, class:"nav-link" do %>
+                <%= image_tag "logo violet.png" %>
             <% end %>
         </li>
 
@@ -12,63 +13,41 @@
         <%# AJOUT FAVORIS %>
         <li class="nav-item mb-5">
             <%= link_to "#", class: "nav-link" do %>
-                <i class="fa-solid fa-heart" style="color: #ffffff;"></i>
+                <%= image_tag "coeur.png" %>
             <% end %>
         </li>
 
         <%# AJOUT ACTIVITE %>
         <li class="nav-item ">
-            <%= link_to "#", class: "nav-link rounded-circle", id:"nav-add" do %>
-                <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+            <%= link_to "activity_registrations_path", class: "nav-link rounded-circle", id:"nav-add" do %>
+                <%= image_tag "plus.png" %>
             <% end %>   
         </li>
 
         <%# MESSAGES %>
         <li class="nav-item mb-5 ">
             <%= link_to "#", class: "nav-link" do %>
-                <i class="fa-regular fa-comment-dots" style="color: #ffffff;"></i>
+                <%= image_tag "message.png" %>
             <% end %>
         </li>
 
         <%# LOGO PROFILE %>
         <% if user_signed_in?%>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <li class="nav-item mb-5 nav-profile">
-                <a href="#" class="avatar" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "Profil menu" %>
+            <li class="nav-item mb-5 nav-profile">
+                <a href="#" class="avatar" aria-haspopup="true" aria-expanded="false" data-action="click->sidebar#open" >
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-nav rounded-circle", alt: "Profil menu" %>
                 </a>
-                </li>
-            </button>
+            </li>
 
         <% else %>
             <li class="nav-item mb-5">
                 <%= link_to new_user_session_path, class: "nav-link" do %>
-                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                    <%= image_tag "user.png" %>
                 <% end %>
             </li>
         <% end %>
     </ul>
     
 </nav>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-            <%= link_to "#", class:"burger-logo" do %>
-                <%= image_tag "logo.png" %>
-            <% end %>
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+  <%= render 'layouts/sidebar' %> 
 </div>

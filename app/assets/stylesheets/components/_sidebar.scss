@@ -1,0 +1,68 @@
+// Modification global de la sidebar
+.sidebar {
+  width: 0;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.sidebar.active {
+  width: 75%;
+}
+
+
+.background-sidebar{
+  height: 100%;
+  background-color: rgba($color: #00000038, $alpha: 0.3);
+  backdrop-filter: blur(1.5rem);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+}
+
+// Modification des Li
+.sidebar-item{
+  height: 140px;
+  padding: 15px;
+  text-align: start;
+  align-content: center;
+  border-bottom: 3px solid black;
+
+  &:last-child{
+    border-bottom: none;
+  }
+}
+
+// Modification des text de la Ul
+.text-sidebar{
+  font-size: 35px;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 10px;
+  
+}
+.text-sidebar:hover{
+  background-color:$violet;
+  border: 2px solid rgba(0, 0, 0, 0.13);
+  color: rgb(255, 255, 255);
+}
+
+// Modification sur le logo
+.logo-sidebar{
+  width: 60px;
+  height: 60px;
+  
+}
+
+// Modification sur l'avatar
+.avatar-sidebar{
+  width: 300px;
+  height: 300px;
+  border: 4px solid $saumon;
+}

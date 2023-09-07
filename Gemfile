@@ -89,3 +89,6 @@ end
 
 # pg search pour la searchbar
 gem "pg_search"
+
+# JQuery pour la sidebar
+# gem 'jquery-rails'
