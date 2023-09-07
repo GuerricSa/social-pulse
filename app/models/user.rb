@@ -13,4 +13,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_one_attached :avatar
+
+  # Favorites
+  acts_as_favoritor
+  acts_as_favoritable
 end

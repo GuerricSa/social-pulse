@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+# Gem to handle favorites (activities and users)
+gem 'acts_as_favoritor'
+
 # Faker for seeds of users and ovens
 gem 'faker'
 

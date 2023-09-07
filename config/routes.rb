@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :activities, only: %i[index show new create edit update] do
     get "/duplicate", to: "activities#duplicate"
     resources :registrations, only: :create
+    member do
+      post 'toggle_favorite', to: "activities#toggle_favorite"
+    end
   end
 
   get "activities/my_activities", to: "activities#my_activities", as: :my_activities

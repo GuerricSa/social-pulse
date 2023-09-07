@@ -2,7 +2,7 @@
 
   <div class="show-card-top">
     <div class="card-img" style="background-image: url(<%= cl_image_path(@activity.photo.key)%>)">
-      <%= link_to activities_path do %>
+      <%= link_to :back do %>
         <i class="fa-solid fa-chevron-left fa-5x" style="color: #614BF2;"></i>
       <% end %>
       <h1><%= @activity.title %></h1>
@@ -36,3 +36,12 @@
   </div>
 
 </div>
+
+<%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
+<%= link_to toggle_favorite_activity_path(@activity), remote: true, data: {
+  turbo_method: :post,
+  controller: "favorites",
+  action: "click->favorites#toggleColor"
+  } do %>
+  <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(@activity) ? 'fa-solid' : 'fa-regular' %> fa-heart"></i>
+<% end %>
