@@ -6,6 +6,9 @@ ruby "3.1.2"
 # Gem to handle favorites (activities and users)
 gem 'acts_as_favoritor'
 
+# For pluralize words if needed [https://github.com/stewart/plural]
+gem 'plural'
+
 # Faker for seeds of users and ovens
 gem 'faker'
 

@@ -1,13 +1,14 @@
 .purple-btn {
-  padding: 10px 20px;
+  padding: 15px 30px;
   border: 1px solid $violet;
   border-radius: 10px;
   color: $violet;
   box-shadow: 4px 5px 7px 0px rgba($violet, 0.24);
   font-weight: bold;
+  font-size: 40px;
+  text-align: center;
   letter-spacing: 1px;
   position: relative;
-  margin-right: 20px;
 
   &:active {
     box-shadow: none;
@@ -17,12 +18,14 @@
 }
 
 #report-btn {
-  padding: 10px 20px;
+  padding: 15px 30px;
   border: 1px solid $saumon;
   border-radius: 10px;
   color: $saumon;
   box-shadow: 4px 5px 7px 0px rgba($saumon, 0.24);
   font-weight: bold;
+  font-size: 40px;
+  text-align: center;
   letter-spacing: 1px;
   position: relative;
 
