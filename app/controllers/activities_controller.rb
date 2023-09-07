@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: %i[show edit update]
+  before_action :set_activity, only: %i[show edit update toggle_favorite]
 
   def index
     @activities = policy_scope(Activity)
@@ -51,6 +51,15 @@ class ActivitiesController < ApplicationController
 
   def my_activities
     @activities = Activities.where(user: current_user)
+  end
+
+  def toggle_favorite
+    authorize @activity
+    if current_user.favorited?(@activity)
+      current_user.unfavorite(@activity)
+    else
+      current_user.favorite(@activity)
+    end
   end
 
   # def duplicate

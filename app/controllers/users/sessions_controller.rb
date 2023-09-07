@@ -51,6 +51,15 @@ class Users::SessionsController < Devise::SessionsController
     render 'devise/registrations/edit_password'
   end
 
+  def toggle_favorite
+    @user = User.find(params[:id])
+    if current_user.favorited?(@user)
+      current_user.unfavorite(@user)
+    else
+      current_user.favorite(@user)
+    end
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
