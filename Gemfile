@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+# Gem to handle favorites (activities and users)
+gem 'acts_as_favoritor'
+
 # For pluralize words if needed [https://github.com/stewart/plural]
 gem 'plural'
 

@@ -16,6 +16,10 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  # Favorites
+  acts_as_favoritor
+  acts_as_favoritable
+
   after_commit :add_default_avatar, on: %i[create update]
 
   private
@@ -27,4 +31,5 @@ class User < ApplicationRecord
       self.save
     end
   end
+
 end
