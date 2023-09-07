@@ -22,3 +22,41 @@
     color: $violet;
   }
 }
+
+// Form activities/new
+
+.form-new-activity {
+  margin: 5%;
+}
+
+.date-form-new, .type-form-new {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-form-new > div, .type-form-new > div {
+  width: 40vw;
+}
+
+.address-form-new {
+  display: grid;
+}
+
+.road-address-form-new {
+  grid-column: 1/4;
+}
+
+.city-address-form-new {
+  grid-column: 5;
+}
+
+.btn-form-new {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: $saumon;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  box-shadow: 3px 5px 4px 1px #0000002b;;
+}
