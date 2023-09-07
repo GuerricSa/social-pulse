@@ -12,7 +12,7 @@
   <div class="show-card-bottom">
 
     <div class="show-card-bottom-user">
-      <%= link_to user_path do %>
+      <%= link_to user_path(current_user) do %>
       <%= cl_image_tag @activity.user.avatar.key, class: "avatar-bordered", crop: "fill" %>
       <% end %>
       <p><%= @activity.user.first_name %></p>
