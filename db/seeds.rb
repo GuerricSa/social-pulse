@@ -88,7 +88,7 @@ STRASBOURG = [
 
 # def used in activity.address
 def address_activities(city)
-  if city
+  if city == "Paris"
     return PARIS.sample
   elsif city == "Lyon"
     return LYON.sample

@@ -3,6 +3,17 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = policy_scope(Activity)
+
+    # Pour Geocode / MapBox
+    @markers = @activities.geocoded.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { activity: activity }),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
+    
     if params[:query].present?
       @activities = Activity.search_by_title_and_content(params[:query])
     else
