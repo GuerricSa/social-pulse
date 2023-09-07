@@ -19,9 +19,9 @@
 
         <%# AJOUT ACTIVITE %>
         <li class="nav-item ">
-            <%= link_to "activity_registrations_path", class: "nav-link rounded-circle", id:"nav-add" do %>
+            <%= link_to new_activity_path, class: "nav-link rounded-circle", id:"nav-add" do %>
                 <%= image_tag "plus.png" %>
-            <% end %>   
+            <% end %>
         </li>
 
         <%# MESSAGES %>
@@ -47,7 +47,7 @@
             </li>
         <% end %>
     </ul>
-    
+
 </nav>
-  <%= render 'layouts/sidebar' %> 
+  <%= render 'layouts/sidebar' %>
 </div>

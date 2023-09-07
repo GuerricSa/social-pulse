@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
-    
+
     if params[:query].present?
       @activities = Activity.search_by_title_and_content(params[:query])
     else
