@@ -41,15 +41,7 @@
         <% end %>
       </div>
       <div class="show-card-bottom-participants-actions">
-        <i class="fa-regular fa-heart fa-5x" style="color: #F28080;"></i>
-        <%= render "layouts/btn_inscription" %>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
+        <%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
 <% if current_user %>
   <%= link_to toggle_favorite_activity_path(activity), remote: true, data: {
     turbo_method: :post,
@@ -67,3 +59,9 @@
     <i data-favorites-target="heart" class="favorite-heart fa-regular %> fa-heart fa-3x"></i>
   <% end %>
 <% end %>
+        <%= render "layouts/btn_inscription" %>
+      </div>
+    </div>
+  </div>
+
+</div>

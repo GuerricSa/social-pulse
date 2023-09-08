@@ -16,7 +16,7 @@ class ActivitiesController < ApplicationController
     end
 
     if params[:query].present?
-      @activities = Activity.search_by_title_and_content(params[:query])
+      @activities = Activity.global_search(params[:query])
     else
       @activities = Activity.all
     end

@@ -6,11 +6,13 @@
   <div class="date-form-new">
     <%= f.input :date,
                 as: :string,
-                input_html: { data: { controller: "datepicker" } }
+                input_html: { data: { controller: "datepicker" } },
+                wrapper_html: { class: 'date-date-form-new' }
     %>
     <%= f.input :duration,
-                :label => "Durée estimée de l'activité",
-                input_html: { min: '1' }
+                :label => "Durée",
+                input_html: { min: '1' },
+                wrapper_html: { class: 'duration-date-form-new' }
     %>
   </div>
   <div class="address-form-new">
@@ -18,10 +20,10 @@
     <%= f.input :city, :label => "Ville", wrapper_html: { class: 'city-address-form-new' } %>
   </div>
   <div class="type-form-new">
-    <%= f.input :activity_type, :label => "Type d'activité", collection: Activity::TYPE %>
-    <%= f.input :participants_max, :label => "Nombre de participants maximum" %>
+    <%= f.input :activity_type, :label => "Type d'activité", collection: Activity::TYPE, wrapper_html: { class: 'activity-type-form-new' } %>
+    <%= f.input :participants_max, :label => "Participants", wrapper_html: { class: 'participants-type-form-new' } %>
   </div>
-  <%= f.input :content, :label => "Description", input_html: { maxlength: 150 } %>
+  <%= f.input :content, :label => "Description", input_html: { maxlength: 150, class: 'input-content-form-new' } %>
   <%= f.input :photo, :label => "Ajouter une photo", as: :file, input_html: { multiple: false } %>
   <%= f.button :submit, "Créer l'activité" , class: "btn-form-new"%>
   <% end %>
