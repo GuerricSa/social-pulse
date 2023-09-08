@@ -19,7 +19,7 @@ Rails.application.configure do
   config.server_timing = true
 
   # Allow requests localtunnel
-  config.hosts.clear
+  # config.hosts.clear
 
   config.hosts << /\A[a-z\d-]+\.loca\.lt\z/
 
