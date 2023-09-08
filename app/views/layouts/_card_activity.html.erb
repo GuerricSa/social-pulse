@@ -14,11 +14,7 @@
       <h2 class="title-card"><%= activity.title %></h2>
       <p><i class="fa-solid fa-location-dot" style="color: #614BF2;"></i> <%= activity.address %>, <%= activity.city %></p>
       <p class="card-date"><i class="fa-regular fa-calendar" style="color: #614BF2;"></i> <%= activity.date.strftime("%A %d %B %Y à %H:%M") %></p>
-      <% if activity.user.avatar %>
-        <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill", fetch_format: :auto %>
-      <% else %>
-        <div class="avatar-bordered" style="background-image: url(<%= image_path "cover.png" %>)"></div>
-      <% end %>
+      <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill", fetch_format: :auto %>
     </div>
   <% end %>
 
@@ -30,5 +26,5 @@
   } do %>
   <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(activity) ? 'fa-solid' : 'fa-regular' %> fa-heart fa-3x"></i>
 <% end %>
-  
+
 </div>
