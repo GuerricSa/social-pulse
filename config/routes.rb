@@ -5,12 +5,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     post '/users/:id/toggle_favorite', to: "users/sessions#toggle_favorite", as: :toggle_favorite_user
     get "/users/:id" => "users/sessions#show", as: :user
-    get "/my_account" => "users/sessions#account"
-    get '/edit_age' => "users/sessions#edit_age"
-    get '/edit_first_name' => "users/sessions#edit_first_name"
-    get '/edit_presentation' => "users/sessions#edit_presentation"
-    get '/edit_avatar' => "users/sessions#edit_avatar"
-    get '/edit_password' => "users/sessions#edit_password"
   end
 
   resources :activities, only: %i[index show new create edit update] do

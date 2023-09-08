@@ -22,41 +22,16 @@ class Users::SessionsController < Devise::SessionsController
     @user = User.find(params[:id])
   end
 
-  def account
-    @user = current_user
-  end
-
-  def edit_age
-    @user = current_user
-    render 'devise/registrations/edit_age'
-  end
-
-  def edit_first_name
-    @user = current_user
-    render 'devise/registrations/edit_first_name'
-  end
-
-  def edit_presentation
-    @user = current_user
-    render 'devise/registrations/edit_presentation'
-  end
-
-  def edit_avatar
-    @user = current_user
-    render 'devise/registrations/edit_avatar'
-  end
-
-  def edit_password
-    @user = current_user
-    render 'devise/registrations/edit_password'
-  end
-
   def toggle_favorite
     @user = User.find(params[:id])
-    if current_user.favorited?(@user)
-      current_user.unfavorite(@user)
+    if current_user
+      if current_user.favorited?(@user)
+        current_user.unfavorite(@user)
+      else
+        current_user.favorite(@user)
+      end
     else
-      current_user.favorite(@user)
+      redirect_to new_user_session_path
     end
   end
 

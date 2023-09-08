@@ -35,16 +35,28 @@
   font-size: 30px;
 }
 
-.address-form-new, .date-form-new, .type-form-new {
+.form-new-activity select option {
+  font-size: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.address-form-new, .date-form-new, .type-form-new  {
   display: grid;
 }
 
 .road-address-form-new, .date-date-form-new, .activity-type-form-new {
   grid-column: 1/4;
+  padding-top: 20px;
 }
 
 .city-address-form-new, .duration-date-form-new, .participants-type-form-new {
   grid-column: 5;
+  padding-top: 20px;
+}
+
+.input-content-form-new {
+  padding-top: 90px;
 }
 
 .btn-form-new {

@@ -10,32 +10,32 @@
         </li>
 
 
-        <%# AJOUT FAVORIS %>
+        <%# ALLER AUX FAVORIS %>
         <li class="nav-item mb-5">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to favorites_path, class: "nav-link" do %>
                 <%= image_tag "coeur.png" %>
             <% end %>
         </li>
 
-        <%# AJOUT ACTIVITE %>
+        <%# AJOUTER UNE ACTIVITE %>
         <li class="nav-item ">
             <%= link_to new_activity_path, class: "nav-link rounded-circle", id:"nav-add" do %>
                 <%= image_tag "plus.png" %>
             <% end %>
         </li>
 
-        <%# MESSAGES %>
+        <%# ACCEDER AUX MESSAGES %>
         <li class="nav-item mb-5 ">
             <%= link_to "#", class: "nav-link" do %>
                 <%= image_tag "message.png" %>
             <% end %>
         </li>
 
-        <%# LOGO PROFILE %>
+        <%# OUVRIR LA SIDEBAR %>
         <% if user_signed_in?%>
             <li class="nav-item mb-5 nav-profile">
                 <a href="#" class="avatar" aria-haspopup="true" aria-expanded="false" data-action="click->sidebar#open" >
-                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-nav rounded-circle", alt: "Profil menu" %>
+                <%= cl_image_tag current_user.avatar.key, class: "avatar-nav rounded-circle", alt: "Profil menu" %>
                 </a>
             </li>
 

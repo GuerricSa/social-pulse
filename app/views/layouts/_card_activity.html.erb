@@ -1,6 +1,7 @@
 <div class="card">
     <% if activity.photo.attached? %>
       <div class="card-img" style="background-image: url(<%= cl_image_path(activity.photo.key)%>)">
+
         <%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
         <% if current_user %>
           <%= link_to toggle_favorite_activity_path(activity), id: "heart-index", remote: true, data: {
@@ -36,6 +37,4 @@
       <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill"%>
     </div>
   <% end %>
-
-
 </div>
