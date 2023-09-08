@@ -1,5 +1,5 @@
 class Activity < ApplicationRecord
-  TYPE = ["Sport", "Musique", "Cuisine", "Art", "Lecture", "Voyage", "Jardinage", "Jeux de société", "Randonnée", "Camping", "Théâtre", "Danse", "Photographie", "Bricolage", "Écriture", "Méditation", "Natation", "Cinéma", "Équitation", "Astronomie"]
+  TYPE = ["Sport", "Musique", "Cuisine", "Art", "Lecture", "Voyage", "Jardinage", "Jeux de societe", "Randonnée", "Camping", "Theatre", "Danse", "Photographie", "Bricolage", "Ecriture", "Meditation", "Natation", "Cinema", "Equitation", "Astronomie"]
   belongs_to :user
   has_many :registrations, dependent: :destroy
   # has_many :favorites

@@ -69,7 +69,7 @@ if Activity.all.length < 10
       activity_type: Activity::TYPE.sample
     )
     activity.title = DESCRIPTION[activity.activity_type].keys.sample
-    activity.content = DESCRIPTION[activity.activity_type][activity.title].sample
+    activity.content = DESCRIPTION[activity.activity_type][activity.title]
     activity.participants_max = rand(2..12) if activity.title.size > 8
     activity.address = ADDRESSES[activity.city].sample
     activity.user = User.all.sample
