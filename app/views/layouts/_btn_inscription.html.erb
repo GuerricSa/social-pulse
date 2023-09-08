@@ -1,8 +1,45 @@
 <%# ce code permet de créer le bouton "Je participe", si on est déjà inscrit, on peut supprimer notre participation %>
 <% if @activity.user != current_user %>
   <% if @my_registration %>
-  <%= link_to "J'annule ma participation", registration_path(@my_registration), class: "btn-participation btn-participation-show", data: { turbo_method: :delete, turbo_confirm: "Tu confirmes l'annulation de ta participation ?" } %>
+    <%= link_to "J'annule ma participation", registration_path(@my_registration), class: "btn-participation", data: { turbo_method: :delete, turbo_confirm: "Tu confirmes l'annulation de ta participation ?" } %>
   <% else %>
-  <%= link_to "Je participe", activity_registrations_path(@activity), class: "btn-participation btn-participation-show", data: { turbo_method: :post } %>
+    <%= form_for [@activity, @registration], html: {
+      data: {
+        controller: "register",
+        action: "submit->register#initSweetalert",
+        turbo: false
+      } } do |f| %>
+      <%= f.submit "Je participe !", class: "btn-participation" %>
+    <% end %>
   <% end %>
 <% end %>
+
+<%# ce code permet d'afficher la page de confirmation d'inscription %>
+<div id="register-confirmation-page" class="d-none" data-register-target="confirmationPage">
+  <h1>Tu es inscrit(e) !</h1>
+  <%= link_to root_path do %>
+    <div class="register-confirmation-list-item">
+      <div class="icone-register-page"><i class="fa-solid fa-house"></i></div>
+      <h2>Accueil</h2>
+    </div>
+  <% end %>
+  <%= link_to "#" do %>
+    <div class="register-confirmation-list-item">
+      <div class="icone-register-page"><i class="fa-solid fa-calendar-days"></i></div>
+      <h2>Ajouter à mon calendrier</h2>
+    </div>
+  <% end %>
+  <%= link_to "#" do %>
+    <div class="register-confirmation-list-item">
+      <div class="icone-register-page"><i class="fa-regular fa-comment-dots"></i></div>
+      <h2>Messagerie de groupe</h2>
+    </div>
+  <% end %>
+  <%= link_to favorites_path do %>
+    <div class="register-confirmation-list-item">
+      <div class="icone-register-page"><i class="fa-solid fa-heart"></i></div>
+      <h2>Mes favoris</h2>
+    </div>
+  <% end %>
+  <p>Retour à l'activité</p>
+</div>

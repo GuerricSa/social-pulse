@@ -1,0 +1,12 @@
+<h1>Les activités que je propose :</h1>
+<ul>
+  <% @my_activities.each do |activity| %>
+    <li><%= activity.title %></li>
+  <% end %>
+</ul>
+<h1>Les activités auxquelles je participe :</h1>
+<ul>
+  <% @my_registrations.each do |registration| %>
+    <li><%= registration.activity.title %></li>
+  <% end %>
+</ul>
