@@ -27,7 +27,10 @@
     <% end %>
     <%= link_to activity_path(activity), class: "card-activity-link" do %>
     <div class="card-bottom">
-      <h2 class="title-card"><%= activity.title %></h2>
+      <div class="card-bottom-titles">
+        <h2 class="title-card"><%= activity.title %></h2>
+        <p><%= activity.activity_type %></p>
+      </div>
       <p><i class="fa-solid fa-location-dot" style="color: #614BF2;"></i> <%= activity.address %>, <%= activity.city %></p>
       <p class="card-date"><i class="fa-regular fa-calendar" style="color: #614BF2;"></i> <%= activity.date.strftime("%A %d %B %Y à %H:%M") %></p>
       <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill"%>

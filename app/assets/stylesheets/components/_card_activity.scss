@@ -46,15 +46,26 @@
 .card-bottom {
   position: relative;
   height: 40%;
-  padding-top: 5%;
+  padding-top: 3%;
   padding-left: 5%;
 }
 
 .title-card {
   width: 100%;
-  padding-bottom: 5%;
   letter-spacing: 3px;
   font-size: 60px;
+  margin-bottom: 0;
+}
+
+.card-bottom-titles {
+  width: 100%;
+  padding-bottom: 3%;
+  letter-spacing: 3px;
+  font-size: 30px;
+}
+
+.card-bottom-titles p {
+  margin-bottom: 0;
 }
 
 .card-bottom p {
