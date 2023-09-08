@@ -9,15 +9,14 @@
           <%= image_tag "logo violet.png",  class: "logo-sidebar" %>
         <% end %>
       </li>
-
-      <li class="mt-5 d-flex justify-content-center">
-        <%= link_to "#" do %>
-          <a href="#", aria-haspopup="true" aria-expanded="false" data-action="click->sidebar#open" >
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class:"avatar-sidebar rounded-circle", alt: "Profil menu" %>
-          </a>
-        <% end %>
-      </li>
       <% if current_user %>
+        <li class="mt-5 d-flex justify-content-center">
+          <%= link_to "#" do %>
+            <%# <a href="#", aria-haspopup="true" aria-expanded="false" data-action="click->sidebar#open" > %>
+              <%= cl_image_tag current_user.avatar.key, class:"avatar-sidebar rounded-circle", alt: "Profil menu" %>
+            <%# </a> %>
+          <% end %>
+        </li>
         <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mon profil", user_path(current_user), class: "text-sidebar" %></li>
       <% end %>
       <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mes notifications", '#' , class: "text-sidebar" %></li>
