@@ -21,8 +21,7 @@
   <div data-favorites-target="tab2Content" class="d-none">
     <div class="cards">
       <% @users.each do |user| %>
-        <%# il faut créer une partiale lorsqu'on affiche la show de l'utilisateur pour l'insérer ici %>
-        <%= user.first_name %>
+        <%= render "layouts/user_info", user: user %>
       <% end %>
     </div>
   </div>

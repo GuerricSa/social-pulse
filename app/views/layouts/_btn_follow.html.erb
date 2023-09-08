@@ -1,0 +1,16 @@
+<div class="d-flex" data-controller="friends">
+  <div class="purple-btn me-4" data-action="click->friends#follow" data-friends-target="followBtn">
+    <% if current_user %>
+      <%= link_to toggle_favorite_user_path(user), remote: true, data: { turbo_method: :post } do %>
+        Suivre
+      <% end %>
+    <% else %>
+      <%= link_to toggle_favorite_user_path(user), remote: true, data: { turbo_method: :post } do %>
+        Suivre
+      <% end %>
+    <% end %>
+  </div>
+  <div id="report-btn" data-action="click->friends#report">
+    <i class="fa-solid fa-triangle-exclamation"></i> Signaler
+  </div>
+</div>
