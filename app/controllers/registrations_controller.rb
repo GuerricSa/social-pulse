@@ -6,9 +6,7 @@ class RegistrationsController < ApplicationController
     authorize @registration
     @registration.user = current_user
     @registration.activity = @activity
-    if @registration.save
-      redirect_to activity_path(@activity)
-    else
+    unless @registration.save
       render "activities/show", status: :unprocessable_entity
     end
   end

@@ -24,6 +24,7 @@ class ActivitiesController < ApplicationController
 
   def show
     authorize @activity
+    @registration = Registration.new(activity: @activity, user: current_user)
     @my_registration = Registration.find_by(user: current_user, activity: @activity)
   end
 
@@ -51,7 +52,10 @@ class ActivitiesController < ApplicationController
   end
 
   def my_activities
-    @activities = Activities.where(user: current_user)
+    @my_activities = Activity.where(user: current_user)
+    authorize @my_activities
+    @my_registrations = Registration.where(user: current_user)
+    # authorize @my_registrations
   end
 
   def toggle_favorite

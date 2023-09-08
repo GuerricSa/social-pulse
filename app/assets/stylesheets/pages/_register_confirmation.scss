@@ -1,0 +1,44 @@
+#register-confirmation-page {
+  height: 100%;
+  width: 100%;
+  background-color: rgba($color: #00000038, $alpha: 0.3);
+  backdrop-filter: blur(1.5rem);
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 200px;
+
+  h1, p {
+    text-align: center;
+    color: white;
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+
+  a {
+    color: white;
+  }
+
+  .register-confirmation-list-item {
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    margin-top: 150px;
+
+
+    .icone-register-page {
+      margin-right: 50px;
+    }
+
+    h2 {
+      flex-grow: 5;
+    }
+  }
+
+  p {
+    font-size: 50px;
+    margin-top: 150px;
+  }
+}

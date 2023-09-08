@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "activities/my_activities", to: "activities#my_activities", as: :my_activities
+  get "my_activities", to: "activities#my_activities", as: :my_activities
 
   resources :registrations, only: :destroy
 

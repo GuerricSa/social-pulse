@@ -22,6 +22,10 @@ class ActivityPolicy < ApplicationPolicy
     true
   end
 
+  def my_activities?
+    true
+  end
+
   def toggle_favorite?
     true
   end
