@@ -24,7 +24,7 @@ export default class extends Controller {
     }).then((action) => {
       /* Read more about isConfirmed, isDenied below */
       if (action.isConfirmed) {
-        Swal.fire('Ta participation est enregistrée !', '', 'success')
+        Swal.fire('Ta participation est enregistrée !', '', 'success');
         event.target[event.type]();
       } else if (action.isDenied) {
         Swal.fire('Aucune participation enregistrée', '', 'info')
