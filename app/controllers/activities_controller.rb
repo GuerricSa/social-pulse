@@ -5,6 +5,12 @@ class ActivitiesController < ApplicationController
   def index
     @activities = policy_scope(Activity)
 
+    if params[:query].present?
+      @activities = Activity.global_search(params[:query])
+    else
+      @activities = Activity.all
+    end
+
     # Pour Geocode / MapBox
     @markers = @activities.geocoded.map do |activity|
       {
@@ -13,12 +19,6 @@ class ActivitiesController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: { activity: activity }),
         marker_html: render_to_string(partial: "marker")
       }
-    end
-
-    if params[:query].present?
-      @activities = Activity.global_search(params[:query])
-    else
-      @activities = Activity.all
     end
   end
 

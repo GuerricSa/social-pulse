@@ -11,6 +11,7 @@
   // z-index: 1;
   box-shadow: 4px 4px 4px 0px #00000016;
   border-radius: 10px;
+  display: block;
 }
 
 //partie supérieur de la card
@@ -25,30 +26,45 @@
   width: 100%;
   height: 60%;
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
   position: relative;
 }
 
 #heart-index {
   position: absolute;
+  display: block;
   top: 10%;
   right: 10%;
 }
 
+#heart-index i {
+  display: block;
+  height: 100%;
+}
 //partie inférieur de la card
 .card-bottom {
   position: relative;
   height: 40%;
-  padding-top: 5%;
+  padding-top: 3%;
   padding-left: 5%;
 }
 
 .title-card {
   width: 100%;
-  padding-bottom: 5%;
   letter-spacing: 3px;
   font-size: 60px;
+  margin-bottom: 0;
+}
+
+.card-bottom-titles {
+  width: 100%;
+  padding-bottom: 3%;
+  letter-spacing: 3px;
+  font-size: 30px;
+}
+
+.card-bottom-titles p {
+  margin-bottom: 0;
 }
 
 .card-bottom p {
