@@ -12,7 +12,7 @@
   <div class="show-card-bottom">
 
     <div class="show-card-bottom-user">
-      <%= link_to user_path(current_user) do %>
+      <%= link_to user_path(@activity.user) do %>
       <%= cl_image_tag @activity.user.avatar.key, class: "avatar-bordered", crop: "fill" %>
       <% end %>
       <p><%= @activity.user.first_name %></p>
@@ -50,10 +50,20 @@
 </div>
 
 <%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
-<%= link_to toggle_favorite_activity_path(@activity), remote: true, data: {
-  turbo_method: :post,
-  controller: "favorites",
-  action: "click->favorites#toggleColor"
-  } do %>
-  <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(@activity) ? 'fa-solid' : 'fa-regular' %> fa-heart"></i>
+<% if current_user %>
+  <%= link_to toggle_favorite_activity_path(activity), remote: true, data: {
+    turbo_method: :post,
+    controller: "favorites",
+    action: "click->favorites#toggleColor"
+    } do %>
+    <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(activity) ? 'fa-solid' : 'fa-regular' %> fa-heart fa-3x"></i>
+  <% end %>
+<% else %>
+  <%= link_to toggle_favorite_activity_path(activity), remote: true, data: {
+    turbo_method: :post,
+    controller: "favorites",
+    action: "click->favorites#toggleColor"
+    } do %>
+    <i data-favorites-target="heart" class="favorite-heart fa-regular %> fa-heart fa-3x"></i>
+  <% end %>
 <% end %>
