@@ -11,6 +11,7 @@
   // z-index: 1;
   box-shadow: 4px 4px 4px 0px #00000016;
   border-radius: 10px;
+  display: block;
 }
 
 //partie supérieur de la card
@@ -32,10 +33,15 @@
 
 #heart-index {
   position: absolute;
+  display: block;
   top: 10%;
   right: 10%;
 }
 
+#heart-index i {
+  display: block;
+  height: 100%;
+}
 //partie inférieur de la card
 .card-bottom {
   position: relative;
