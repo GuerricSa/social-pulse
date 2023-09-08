@@ -8,14 +8,7 @@
 
 require 'faker'
 require "open-uri"
-
-USER_PRESENTATIONS = [
-  "Amoureuse de la nature, cherche des compagnons de randonnée pour explorer les sentiers pittoresques de sa région.",
-  "Passionné de cuisine, propose des ateliers de cuisine à domicile pour partager ses talents culinaires avec d'autres gourmets.",
-  "Fan de musique, recherche des partenaires de jam pour des sessions musicales improvisées dans son quartier.",
-  "Photographe amateur, organise des sorties photo pour capturer les plus beaux moments de la vie locale.",
-  "Sportive passionnée, cherche des coéquipiers pour des matchs de football amical le week-end."
-].freeze
+require_relative "array_seed"
 
 if User.all.size < 5
   puts "Creating 5 users..."
@@ -34,71 +27,34 @@ if User.all.size < 5
   puts "Done!"
 end
 
-unless User.find_by(first_name: "Truc")
-  puts "Creating Truc"
-  truc = User.new(
-    email: "truc@gmail.com",
-    first_name: "Truc",
+unless User.find_by(first_name: "Paul")
+  puts "Creating Paul"
+  paul = User.new(
+    email: "paul@gmail.com",
+    first_name: "Paul",
     password: "123456",
     age: 28,
     presentation: "J'adore le surf, le ciné et boire des verres entre amis!"
   )
-  file = URI.open("https://source.unsplash.com/random/?avatar,face")
-  truc.avatar.attach(io: file, filename: "avatar#{truc.id}.png", content_type: "image/png")
-  truc.save
-  puts "Truc is alive!"
+  file = URI.open("https://images.unsplash.com/photo-1649123245135-4db6ead931b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1925&q=80")
+  paul.avatar.attach(io: file, filename: "avatar#{paul.id}.png", content_type: "image/png")
+  paul.save
+  puts "Paul is alive!"
 end
 
-CITIES = %i[Paris Lyon Lille Rennes Strasbourg].freeze
-
-PARIS = [
-  "222 rue de l'université",
-  "2 avenue des Champs-Élysées",
-  "3 rue du Louvre",
-  "3 rue des Haudriettes",
-  "5 boulevard Saint-Germain"
-].freeze
-
-LYON = [
-  "6 place Bellecour",
-  "7 rue de la Croix-Rousse",
-  "8 quai Victor Augagneur",
-  "15 rue de l'Abondance",
-  "10 avenue Jean Jaurès"
-].freeze
-
-LILLE = [
-  "6 rue Nationale",
-  "12 avenue du Général de Gaulle",
-  "15 rue Jean Moulin"
-].freeze
-
-RENNES = [
-  "14 place du Théâtre",
-  "13 rue de la monnaie",
-  "16 boulevard de la Liberté"
-].freeze
-
-STRASBOURG = [
-  "17 rue du Parlement",
-  "18 quai des Bateliers",
-  "19 place de la Cathédrale",
-  "20 rue des Juifs"
-].freeze
-
-# def used in activity.address
-def address_activities(city)
-  if city == "Paris"
-    return PARIS.sample
-  elsif city == "Lyon"
-    return LYON.sample
-  elsif city == "Lille"
-    return LILLE.sample
-  elsif city == "Rennes"
-    return RENNES.sample
-  elsif city == "Strasbourg"
-    return STRASBOURG.sample
-  end
+unless User.find_by(first_name: "Lorie")
+  puts "Creating Lorie"
+  lorie = User.new(
+    email: "lorie@gmail.com",
+    first_name: "Lorie",
+    password: "123456",
+    age: 41,
+    presentation: "J'adore la musique, le patinage artistique, de surcroit je me passionne pour la philatélie !"
+  )
+  file = URI.open("https://www.hiersoiraparis.com/wp-content/uploads/2020/09/Lorie-02.jpeg")
+  lorie.avatar.attach(io: file, filename: "avatar#{lorie.id}.png", content_type: "image/png")
+  lorie.save
+  puts "Lorie is alive!"
 end
 
 # loop for activities
@@ -106,18 +62,18 @@ if Activity.all.length < 10
   puts "Creating activities"
   (10 - Activity.all.length).times do
     activity = Activity.new(
-      title: Faker::Hobby.activity,
-      content: Faker::Lorem.sentence(word_count: rand(20..40)),
       date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90),
       duration: rand(1..6),
       city: CITIES.sample,
       cancelled: false,
       activity_type: Activity::TYPE.sample
     )
-    activity.participants_max = rand(2..8) if activity.title.size > 8
-    activity.address = address_activities(activity.city)
+    activity.title = DESCRIPTION[activity.activity_type].keys.sample
+    activity.content = DESCRIPTION[activity.activity_type][activity.title].sample
+    activity.participants_max = rand(2..12) if activity.title.size > 8
+    activity.address = ADDRESSES[activity.city].sample
     activity.user = User.all.sample
-    file_picture = URI.open("https://source.unsplash.com/random/?activity")
+    file_picture = URI.open("https://source.unsplash.com/random/?#{activity.activity_type}")
     activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
     activity.save!
   end
