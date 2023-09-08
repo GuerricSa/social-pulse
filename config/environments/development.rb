@@ -21,6 +21,7 @@ Rails.application.configure do
   # Allow requests localtunnel
   config.hosts.clear
 
+  config.hosts << /\A[a-z\d-]+\.loca\.lt\z/
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

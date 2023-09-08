@@ -1,7 +1,7 @@
 <h1 class="activities-h1">Création d'une activité</h1>
 
 <div class="form-new-activity">
-  <%= simple_form_for @registration do |f| %>
+  <%= simple_form_for @activity do |f| %>
   <%= f.input :title, :label => "Titre de l'activité" %>
   <div class="date-form-new">
     <%= f.input :date,
