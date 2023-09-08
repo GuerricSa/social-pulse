@@ -1,8 +1,8 @@
 <div class="show-card">
 
   <div class="show-card-top">
-    <div class="card-img" style="background-image: url(<%= cl_image_path(@activity.photo.key)%>)">
-      <%= link_to :back do %>
+    <div class="card-img" style="background-image: url(<%= cl_image_path(@activity.photo.key, crop: :fill, gravity: :face)%>)">
+      <%= link_to root_path do %>
         <i class="fa-solid fa-chevron-left fa-5x" style="color: #614BF2;"></i>
       <% end %>
       <div class="show-card-top-titles">

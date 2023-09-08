@@ -16,8 +16,8 @@ class Activity < ApplicationRecord
 
   # PG Search
   include PgSearch::Model
-  pg_search_scope :search_by_title_and_content,
-  against: [ :title, :content ],
+  pg_search_scope :global_search,
+  against: [ :title, :content, :address, :city, :activity_type ],
   using: {
     tsearch: { prefix: true }
   }
