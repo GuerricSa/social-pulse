@@ -29,10 +29,10 @@
   margin: 5%;
 }
 
-.form-new-activity input, .form-new-activity select {
-    font-size: 30px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+.form-new-activity input, .form-new-activity select, .form-new-activity textarea  {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 30px;
 }
 
 .form-new-activity select option {

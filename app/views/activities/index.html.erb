@@ -1,12 +1,27 @@
 <h1 class="activities-h1">Activités autour de chez toi</h1>
-<div class="cards">
-  <% @activities.each do |activity| %>
-  <%= render "layouts/card_activity", activity: activity %>
-  <% end %>
-</div>
 
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<div data-controller="index-activities">
+
+  <%# ce bloc contient les tabs pour passer des activités proposées aux autres %>
+  <div class="tabs pt-2">
+    <div class="tab active" data-action="click->index-activities#tab1" data-index-activities-target="tab1">Liste</div>
+    <div class="tab" data-action="click->index-activities#tab2" data-index-activities-target="tab2">Carte</div>
+  </div>
+
+  <div data-index-activities-target="tab1Content" class="">
+    <div class="cards">
+      <% @activities.each do |activity| %>
+      <%= render "layouts/card_activity", activity: activity %>
+      <% end %>
+    </div>
+  </div>
+
+  <div data-index-activities-target="tab2Content" class="d-none">
+    <div style="width: 100%; height: 83vh;"
+      data-index-activities-target="map"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>
