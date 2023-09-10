@@ -21,7 +21,7 @@
   <div data-favorites-target="tab2Content" class="d-none">
     <div class="cards">
       <% @users.each do |user| %>
-        <%= render "layouts/user_info", user: user %>
+        <%= render "layouts/fav_user", user: user %>
       <% end %>
     </div>
   </div>

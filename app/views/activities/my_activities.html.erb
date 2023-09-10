@@ -1,12 +1,50 @@
-<h1>Les activités que je propose :</h1>
-<ul>
-  <% @my_activities.each do |activity| %>
-    <li><%= activity.title %></li>
-  <% end %>
-</ul>
-<h1>Les activités auxquelles je participe :</h1>
-<ul>
-  <% @my_registrations.each do |registration| %>
-    <li><%= registration.activity.title %></li>
-  <% end %>
-</ul>
+<h1 class="activities-h1">Mes activités</h1>
+<div data-controller="favorites">
+
+  <%# ce bloc contient les tabs pour passer des activités proposées aux autres %>
+  <div class="tabs pt-2">
+    <div class="tab active" data-action="click->favorites#tab1" data-favorites-target="tab1">À venir</div>
+    <div class="tab" data-action="click->favorites#tab2" data-favorites-target="tab2">Historique</div>
+  </div>
+
+  <%# ce bloc contient les activités favorites de l'user connecté %>
+  <div data-favorites-target="tab1Content" class="">
+    <% if @my_future_activities %>
+      <h2 class="mt-5">Les activités que je propose : </h2>
+      <div class="cards">
+        <% @my_future_activities.each do |activity| %>
+          <%= render "layouts/card_activity", activity: activity %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if @my_future_registrations %>
+      <h2 class="mt-5">Les activités auxquelles je participe : </h2>
+      <div class="cards">
+        <% @my_future_registrations.each do |registration| %>
+          <%= render "layouts/card_activity", activity: registration.activity %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <%# ce bloc contient les personnes favorites de l'user connecté %>
+  <div data-favorites-target="tab2Content" class="d-none">
+    <% if @my_past_activities %>
+      <h2 class="mt-5">Les activités que j'ai proposées : </h2>
+      <div class="cards">
+        <% @my_past_activities.each do |activity| %>
+          <%= render "layouts/card_activity", activity: activity %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if @my_past_registrations %>
+      <h2 class="mt-5">Les activités auxquelles j'ai participé : </h2>
+      <div class="cards">
+        <% @my_past_registrations.each do |registration| %>
+          <%= render "layouts/card_activity", activity: registration.activity %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
