@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   resources :registrations, only: :destroy
 
   resources :favorites, only: :index
+
+  resources :chatrooms, only: %i[show index] do
+    resources :messages, only: :create
+  end
 end
