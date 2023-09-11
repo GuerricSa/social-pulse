@@ -1,0 +1,52 @@
+// style des chatrooms dans l'index
+.chatroom-link {
+  padding: 0 60px;
+  width: 100%;
+}
+
+.chatrooms {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 160px;
+  padding-right: 20px;
+}
+
+.chatroom-photo-and-info {
+  display: flex;
+  align-items: center;
+}
+
+.chatroom-info {
+  h3 {
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 30px;
+  }
+}
+
+.nb-participants {
+  position: relative;
+  right: 45px;
+  top: 50px;
+  color: white;
+  text-shadow: 1px 1px 5px #00000075;
+}
+
+.chatroom-info-2 {
+  p {
+    margin: 0;
+
+    i {
+      color: $violet;
+    }
+  }
+}
+
+.chevron-chatroom {
+  color: $saumon;
+  font-size: 100px;
+}

@@ -10,6 +10,7 @@ nav {
   border-top: 1px solid rgba(43, 43, 43, 0.404);
   padding-top: 15px;
   padding-bottom: 20px;
+  z-index: 1000;
   img{
     padding: 0;
     width: 96px;
@@ -45,5 +46,3 @@ nav {
     width: 140px;
     height: 140px;
 }
-
-

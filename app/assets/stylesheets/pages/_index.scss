@@ -2,6 +2,12 @@
 @import "home";
 @import "user";
 @import "register_confirmation";
+@import "chatrooms";
+
+
+.list-or-map {
+  position: relative;
+}
 
 .cards {
   display: grid;
@@ -17,7 +23,7 @@
 }
 
 .margin-bottom-body {
-  margin-bottom: 7vh;
+  margin-bottom: 4vh;
 }
 
 @media (min-width: 1400px) {

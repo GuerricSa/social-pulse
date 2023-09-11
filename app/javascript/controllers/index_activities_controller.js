@@ -11,14 +11,14 @@ export default class extends Controller {
     event.target.classList.add("active");
     this.tab2Target.classList.remove("active");
     this.tab1ContentTarget.classList.remove("d-none");
-    this.tab2ContentTarget.classList.add("d-none");
+    this.tab2ContentTarget.classList.add("behind");
   }
 
   tab2(event) {
     event.target.classList.add("active");
     this.tab1Target.classList.remove("active");
     this.tab1ContentTarget.classList.add("d-none");
-    this.tab2ContentTarget.classList.remove("d-none");
+    this.tab2ContentTarget.classList.remove("behind");
     this.mapTarget.resize()
   }
 }

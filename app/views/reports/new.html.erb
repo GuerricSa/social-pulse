@@ -1,0 +1,8 @@
+<h1 class="activities-h1">Signaler un utilisateur</h1>
+
+<div class="form-new-report">
+  <%= simple_form_for @report do |f| %>
+    <%= f.input :content, minlength: 6, maxlength: 200, label: false, input_html: {rows: "5"}%>
+  <% end %>
+  
+</div>
