@@ -23,4 +23,8 @@ Rails.application.routes.draw do
 
   resources :favorites, only: :index
 
+  resources :chatrooms, only: %i[show index] do
+    resources :messages, only: :create
+  end
+
 end
