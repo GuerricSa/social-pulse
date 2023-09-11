@@ -59,7 +59,7 @@ end
 
 # loop for activities
 if Activity.all.length < 10
-  puts "Creating activities"
+  puts "Creating activities..."
   (10 - Activity.all.length).times do
     activity = Activity.new(
       date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90),
@@ -78,8 +78,15 @@ if Activity.all.length < 10
     activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
     activity.save!
   end
-  puts "Activities created"
+  puts "Activities created!"
+  puts "Creating associated chatrooms..."
+  Activity.all.each do |activity|
+    Chatroom.create(name: "#{activity.title} ##{activity.id}", activity: activity)
+  end
+  puts "Chatrooms created!"
 end
+
+
 
 if Registration.all.size < 20
   puts "Creating registrations..."
