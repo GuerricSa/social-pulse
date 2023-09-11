@@ -1,31 +1,25 @@
 <div class="card">
-    <% if activity.photo.attached? %>
-      <div class="card-img" style="background-image: url(<%= cl_image_path(activity.photo.key)%>)">
-
-        <%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
-        <% if current_user %>
-          <%= link_to toggle_favorite_activity_path(activity), id: "heart-index", remote: true, data: {
-            turbo_method: :post,
-            controller: "favorites",
-            action: "click->favorites#toggleColor"
-            } do %>
-            <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(activity) ? 'fa-solid' : 'fa-regular' %> fa-heart fa-3x"></i>
-          <% end %>
-        <% else %>
-          <%= link_to toggle_favorite_activity_path(activity), id: "heart-index", remote: true, data: {
-            turbo_method: :post,
-            controller: "favorites",
-            action: "click->favorites#toggleColor"
-            } do %>
-            <i data-favorites-target="heart" class="favorite-heart fa-regular fa-heart fa-3x"></i>
-          <% end %>
+    <div class="card-img" style="background-image: url(<%= cl_image_path(activity.photo.key)%>)">
+      <%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
+      <% if current_user %>
+        <%= link_to toggle_favorite_activity_path(activity), id: "heart-index", remote: true, data: {
+          turbo_method: :post,
+          controller: "favorites",
+          action: "click->favorites#toggleColor"
+          } do %>
+          <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(activity) ? 'fa-solid' : 'fa-regular' %> fa-heart fa-3x"></i>
         <% end %>
-      </div>
-    <% else %>
-      <div class="card-img" style="background-image: url(<%= image_path "logo.png" %>)">
-        <i id="heart-index" class="fa-regular fa-heart fa-3x" style="color: #614BF2;"></i>
-      </div>
-    <% end %>
+      <% else %>
+        <%= link_to toggle_favorite_activity_path(activity), id: "heart-index", remote: true, data: {
+          turbo_method: :post,
+          controller: "favorites",
+          action: "click->favorites#toggleColor"
+          } do %>
+          <i data-favorites-target="heart" class="favorite-heart fa-regular fa-heart fa-3x"></i>
+        <% end %>
+      <% end %>
+    </div>
+
     <%= link_to activity_path(activity), class: "card-activity-link" do %>
     <div class="card-bottom">
       <div class="card-bottom-titles">

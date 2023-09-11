@@ -8,12 +8,11 @@ export default class extends Controller {
   }
 
   follow() {
-    if (this.followBtnTarget.innerText == "Suivi(e)") {
-      this.followBtnTarget.innerText = "Suivre"
+    if (this.followBtnTarget.innerHTML == "<p><i class='fa-solid fa-heart'></i> Suivi(e)</p>") {
+      this.followBtnTarget.innerHTML = "<p><i class='fa-regular fa-heart'>Suivre</p>"
     } else {
-      this.followBtnTarget.innerText = "Suivi(e)"
+      this.followBtnTarget.innerHTML = "<p><i class='fa-solid fa-heart'></i> Suivi(e)</p>"
     }
-    // il faut rajouter la méthode pour ajouter l'user id à la table friends
   }
 
   report() {

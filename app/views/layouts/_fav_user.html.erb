@@ -1,0 +1,12 @@
+<div id="fav-user">
+  <%= link_to user_path(user) do %>
+    <div class="d-flex align-items-center">
+      <%= cl_image_tag user.avatar.key, width: 160, height: 160, crop: :fill %>
+      <div id="fav-user-info">
+        <h3><%= user.first_name %></h3>
+        <p><%= user.age %> ans</p>
+      </div>
+    </div>
+  <% end %>
+  <%= render "layouts/btn_follow", user: user %>
+</div>

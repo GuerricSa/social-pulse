@@ -6,9 +6,10 @@ class ActivitiesController < ApplicationController
     @activities = policy_scope(Activity)
 
     if params[:query].present?
-      @activities = Activity.global_search(params[:query])
+      @activities = Activity.global_search(params[:query]).order(:date)
     else
       @activities = Activity.all
+      # @activities = Activity.all_future
     end
 
     # Pour Geocode / MapBox
@@ -52,9 +53,12 @@ class ActivitiesController < ApplicationController
   end
 
   def my_activities
-    @my_activities = Activity.where(user: current_user)
-    authorize @my_activities
-    @my_registrations = Registration.where(user: current_user)
+    @my_future_activities = Activity.all_future.find(user: current_user)
+    @my_past_activities = Activity.all_past.find(user: current_user)
+    authorize @my_future_activities, policy_class: ActivityPolicy
+    authorize @my_past_activities, policy_class: ActivityPolicy
+    @my_future_registrations = Registration.all_future.find(user: current_user)
+    @my_future_registrations = Registration.all_past.find(user: current_user)
     # authorize @my_registrations
   end
 

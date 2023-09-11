@@ -2,7 +2,6 @@ class Activity < ApplicationRecord
   TYPE = ["Sport", "Musique", "Cuisine", "Art", "Lecture", "Voyage", "Jardinage", "Jeux de societe", "Randonnee", "Camping", "Theatre", "Danse", "Photographie", "Bricolage", "Ecriture", "Meditation", "Natation", "Cinema", "Equitation", "Astronomie"]
   belongs_to :user
   has_many :registrations, dependent: :destroy
-  # has_many :favorites
 
   # Cloudinary
   has_one_attached :photo
@@ -17,7 +16,7 @@ class Activity < ApplicationRecord
   # PG Search
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :title, :content, :address, :city, :activity_type ],
+  against: %i[ title content address city activity_type ],
   using: {
     tsearch: { prefix: true }
   }
@@ -32,4 +31,32 @@ class Activity < ApplicationRecord
 
   # Favorites
   acts_as_favoritable
+
+  # Méthode qui permet de récupérer les activités futures
+  def self.all_future
+    future = []
+    Activity.order(:date).each do |activity|
+      future << activity if activity.date >= DateTime.now
+    end
+  end
+
+  # Méthode qui permet de récupérer les activités passées
+  def self.all_past
+    past = []
+    Activity.order(date: :desc).each do |activity|
+      past << activity if activity.date < DateTime.now
+    end
+  end
+
+  after_commit :add_default_photo, on: %i[create update]
+
+  private
+
+  def add_default_photo
+    unless photo.attached?
+      file = URI.open("https://source.unsplash.com/random/?#{self.activity_type}")
+      self.photo.attach(io: file, filename: "photo-default.png", content_type: "image/png")
+      self.save
+    end
+  end
 end
