@@ -39,6 +39,7 @@ class ActivitiesController < ApplicationController
     @activity.user = current_user
     authorize @activity
     if @activity.save!
+      Chatroom.create(name: "#{@activity.title} ##{@activity.id}", activity: @activity)
       redirect_to activity_path(@activity)
     else
       render :new

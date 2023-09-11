@@ -1,0 +1,10 @@
+<ul>
+<%= @chatrooms.each do |chatroom| %>
+  <li>
+  <%= chatroom.name %>
+  <%= chatroom.activity.date %>
+
+  </li>
+<% end %>
+
+</ul>
