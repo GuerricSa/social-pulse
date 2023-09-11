@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["tab1", "tab2", "tab1Content", "tab2Content"]
 
   connect() {
-    console.log("hello from indx activities controller")
   }
 
   tab1(event) {

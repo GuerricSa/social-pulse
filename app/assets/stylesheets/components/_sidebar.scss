@@ -1,3 +1,7 @@
+.side-and-nav-bar {
+  position: relative;
+}
+
 // Modification global de la sidebar
 .sidebar {
   width: 0;
@@ -8,13 +12,25 @@
   background-color: #ffffff;
   overflow-x: hidden;
   transition: 0.5s;
-  z-index: 1;
+  z-index: 3;
 }
 
 .sidebar.active {
   width: 75%;
 }
 
+// Modification sur le logo
+.div-logo-sidebar {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.logo-sidebar {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .background-sidebar{
   height: 100%;
@@ -53,13 +69,6 @@
   background-color: rgba(0, 0, 0, 0.411);
   border: 2px solid rgba(0, 0, 0, 0.13);
   color: rgb(255, 255, 255);
-}
-
-// Modification sur le logo
-.logo-sidebar{
-  width: 60px;
-  height: 60px;
-
 }
 
 // Modification sur l'avatar
