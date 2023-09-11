@@ -3,6 +3,11 @@
 @import "user";
 @import "register_confirmation";
 
+
+.list-or-map {
+  position: relative;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr ;

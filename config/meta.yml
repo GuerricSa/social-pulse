@@ -1,6 +1,6 @@
 # config/meta.yml
 meta_product_name: "Social Pulse"
 meta_title: "Social Pulse - Active tes rencontres"
-meta_description: "Découvrez des activités locales passionnantes près de chez vous avec Social Pulse. Inscrivez-vous et rejoignez la communauté dès maintenant !"
+meta_description: "Découvrez des activités locales passionnantes avec Social Pulse. Inscrivez-vous et rejoignez la communauté dès maintenant !"
 meta_image: "cover.png"
 # should exist in `app/assets/images/` twitter_account: "@product_twitter_account"   # required for Twitter Cards
