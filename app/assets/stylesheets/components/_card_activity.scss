@@ -1,25 +1,23 @@
 // --------- Card-activity view-index-list--------------
 
 .card {
-  height: 800px;
-  width: 740px;
+  height: 1200px;
+  width: 100%;
   margin-top: 40px;
   margin-bottom: 20px;
   overflow: hidden;
   border: 1px solid $saumon;
-  // position: relative;
-  // z-index: 1;
+  position: relative;
+  z-index: 1;
   box-shadow: 4px 4px 4px 0px #00000016;
   border-radius: 10px;
   display: block;
 }
 
-//partie supérieur de la card
-.card-activity-link {
-  // position: absolute;
-  // z-index: -1;
-  // inset: 0;
-  height: 100%;
+.background-link {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
 }
 
 .card .card-img {
@@ -35,6 +33,7 @@
   display: block;
   top: 10%;
   right: 10%;
+  z-index: 3;
 }
 
 #heart-index i {
@@ -49,18 +48,35 @@
   padding-left: 5%;
 }
 
+.link-avatar-index {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  right: 40px;
+  top: 0;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.card-bottom-titles-2lines {
+  width: 80%;
+  padding-bottom: 3%;
+  letter-spacing: 3px;
+  font-size: 30px;
+}
+
+.card-bottom-titles-1line {
+  width: 80%;
+  padding-bottom: 6%;
+  letter-spacing: 3px;
+  font-size: 30px;
+}
+
 .title-card {
   width: 100%;
   letter-spacing: 3px;
   font-size: 60px;
   margin-bottom: 0;
-}
-
-.card-bottom-titles {
-  width: 100%;
-  padding-bottom: 3%;
-  letter-spacing: 3px;
-  font-size: 30px;
 }
 
 .card-bottom-titles p {
