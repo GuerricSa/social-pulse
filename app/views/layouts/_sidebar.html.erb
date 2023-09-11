@@ -4,10 +4,8 @@
 <div class="sidebar" data-sidebar-target="bar">
 
     <ul>
-      <li class=" p-3 mb-5">
-        <%= link_to root_path do %>
-          <%= image_tag "logo violet.png",  class: "logo-sidebar" %>
-        <% end %>
+      <li class=" p-3 mb-5 div-logo-sidebar">
+        <div class="logo-sidebar" style="background-image: url(<%= image_path("logo_violet.png")%>)"></div>
       </li>
       <% if current_user %>
         <li class="mt-5 d-flex justify-content-center">
@@ -29,6 +27,4 @@
 
       <li class="sidebar-item mt-5 ms-5 me-5 d-flex  align-items-center"><%= link_to "Me déconnecter", destroy_user_session_path , class: "text-sidebar", data: { turbo_method: :delete } %></li>
     </ul>
-
-
 </div>
