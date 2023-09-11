@@ -1,4 +1,5 @@
 <div class="card">
+    <%= link_to "", activity_path(activity), class: "background-link" %>
     <div class="card-img" style="background-image: url(<%= cl_image_path(activity.photo.key)%>)">
       <%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
       <% if current_user %>
@@ -19,16 +20,15 @@
         <% end %>
       <% end %>
     </div>
-
-    <%= link_to activity_path(activity), class: "card-activity-link" do %>
     <div class="card-bottom">
-      <div class="card-bottom-titles">
+      <div class=<%= activity.title.size < 26 ? 'card-bottom-titles-1line' : 'card-bottom-titles-2lines' %>>
         <h2 class="title-card"><%= activity.title %></h2>
         <p><%= activity.activity_type %></p>
       </div>
       <p><i class="fa-solid fa-location-dot" style="color: #614BF2;"></i> <%= activity.address %>, <%= activity.city %></p>
       <p class="card-date"><i class="fa-regular fa-calendar" style="color: #614BF2;"></i> <%= activity.date.strftime("%A %d %B %Y à %H:%M") %></p>
-      <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill"%>
+      <%= link_to user_path(activity.user), class: "link-avatar-index" do %>
+        <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill" %>
+      <% end %>
     </div>
-  <% end %>
 </div>

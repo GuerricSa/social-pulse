@@ -16,6 +16,7 @@ class ChatroomsController < ApplicationController
     # Chatroom.joins(:registration).where("registration.user = current_user").each do |chatroom|
     #   @chatrooms << chatroom
     # end
+    
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new

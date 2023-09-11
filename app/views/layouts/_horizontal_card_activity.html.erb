@@ -1,0 +1,14 @@
+<%= link_to activity_path(activity) do %>
+  <div class="horizontal-card">
+    <div class="d-flex align-items-center content-horizontal-card">
+      <%= cl_image_tag activity.photo.key, width: 160, height: 160, crop: :fill %>
+      <div id="fav-user-info">
+        <h3><%= activity.title %></h3>
+        <p><%= activity.date.strftime("%a. %d/%m à %Hh%M") %></p>
+      </div>
+    </div>
+    <div class="chevron-horizontal-card">
+      <i class="fa-solid fa-chevron-up fa-rotate-90"></i>
+    </div>
+  </div>
+<% end %>

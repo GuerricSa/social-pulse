@@ -10,9 +10,9 @@
 
   <%# ce bloc contient les activités favorites de l'user connecté %>
   <div data-favorites-target="tab1Content" class="">
-    <div class="cards">
+    <div class="cards cards-my-activities">
       <% @activities.each do |activity| %>
-        <%= render "layouts/card_activity", activity: activity %>
+        <%= render "layouts/horizontal_card_activity", activity: activity %>
       <% end %>
     </div>
   </div>
