@@ -1,6 +1,6 @@
 <div class="cards">
   <% @chatrooms.each do |chatroom| %>
-    <%= link_to chatroom_path(chatroom) do %>
+    <%= link_to chatroom_path(chatroom), class: "chatroom-link" do %>
       <%= render "card_chatroom_index", chatroom: chatroom %>
     <% end %>
   <% end %>

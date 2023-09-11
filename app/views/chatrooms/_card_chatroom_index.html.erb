@@ -1,13 +1,15 @@
 <div class="chatrooms">
-  <div class="d-flex align-items-center">
+  <div class="chatroom-photo-and-info">
     <%= cl_image_tag chatroom.activity.photo.key, width: 160, height: 160, crop: :fill %>
     <div class="nb-participants"><%= chatroom.activity.registrations.size + 1 %> <i class="fa-solid fa-person"></i></div>
     <div class="chatroom-info">
       <h3><%= chatroom.name %></h3>
       <div class="chatroom-info-2">
         <p><i class="fa-solid fa-calendar-days"></i> <%= chatroom.activity.date.strftime("%e %b %y à %kh%M") %></p>
-        <i class="fa-solid fa-circle-chevron-right"></i>
       </div>
     </div>
+  </div>
+  <div class="chevron-chatroom">
+    <i class="fa-solid fa-circle-chevron-right"></i>
   </div>
 </div>
