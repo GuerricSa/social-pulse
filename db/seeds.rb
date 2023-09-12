@@ -10,14 +10,14 @@ require 'faker'
 require "open-uri"
 require_relative "array_seed"
 
-if User.all.size < 5
+if User.all.size < 10
   puts "Creating 5 users..."
-  5.times do
+  10.times do
     user = User.new(
       email: Faker::Internet.email,
       first_name: Faker::Name.first_name,
       password: "123456",
-      age: (15..50).to_a.sample,
+      age: (18..50).to_a.sample,
       presentation: USER_PRESENTATIONS.sample
     )
     file = URI.open("https://source.unsplash.com/random/?avatar,face")
@@ -58,11 +58,11 @@ unless User.find_by(first_name: "Lorie")
 end
 
 # loop for activities
-if Activity.all.length < 10
+if Activity.all.length < 15
   puts "Creating activities..."
-  (10 - Activity.all.length).times do
+  (15 - Activity.all.length).times do
     activity = Activity.new(
-      date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90),
+      date: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now + 90),
       duration: rand(1..6),
       city: CITIES.sample,
       cancelled: false,
@@ -86,16 +86,17 @@ if Activity.all.length < 10
   puts "Chatrooms created!"
 end
 
-
-
 if Registration.all.size < 20
   puts "Creating registrations..."
   Registration.destroy_all
   User.all.each do |user|
-    reg = Registration.new
-    reg.user = user
-    reg.activity = Activity.all.sample
-    reg.save!
+    activities_without_user = Activity.all.reject { |act| act.user == user }
+    reg1 = Registration.new(user: user)
+    reg1.activity = activities_without_user.sample
+    reg1.save!
+    reg2 = Registration.new(user: user)
+    reg2.activity = activities_without_user.reject { |act| act == reg1.activity }.sample
+    reg2.save!
   end
   puts "All finished!"
 end
