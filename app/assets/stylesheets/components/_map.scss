@@ -1,16 +1,30 @@
+.div-map {
+  width: 100%;
+}
+
 .mapboxgl-popup {
-  max-width: 200px;
+  max-width: none!important;
 }
 
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
+  padding: 0;
 }
 
+.mapboxgl-popup-close-button {
+  font-size: 40px;
+}
+
+.mapboxgl-canvas-container {
+  position: relative;
+}
+
+.mapboxgl-marker img {
+  filter: invert(33%) sepia(61%) saturate(5706%) hue-rotate(240deg) brightness(96%) contrast(98%);
+}
+
+// for stimulus
 .behind {
   z-index: -1;
-}
-
-.div-map {
-  width: 100%;
 }

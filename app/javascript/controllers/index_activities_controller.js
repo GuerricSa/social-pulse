@@ -19,6 +19,5 @@ export default class extends Controller {
     this.tab1Target.classList.remove("active");
     this.tab1ContentTarget.classList.add("d-none");
     this.tab2ContentTarget.classList.remove("behind");
-    this.mapTarget.resize()
   }
 }
