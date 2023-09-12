@@ -54,12 +54,12 @@ class ActivitiesController < ApplicationController
   end
 
   def my_activities
-    @my_future_activities = Activity.all_future.find(user: current_user)
-    @my_past_activities = Activity.all_past.find(user: current_user)
+    @my_future_activities = Activity.all_future.select { |act| act.user == current_user }
+    @my_past_activities = Activity.all_past.select { |act| act.user == current_user }
     authorize @my_future_activities, policy_class: ActivityPolicy
     authorize @my_past_activities, policy_class: ActivityPolicy
-    @my_future_registrations = Registration.all_future.find(user: current_user)
-    @my_future_registrations = Registration.all_past.find(user: current_user)
+    @my_future_registrations = Registration.all_future.select { |reg| reg.user == current_user }
+    @my_past_registrations = Registration.all_past.select { |reg| reg.user == current_user }
     # authorize @my_registrations
   end
 

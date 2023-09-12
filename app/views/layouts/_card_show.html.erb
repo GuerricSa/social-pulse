@@ -23,7 +23,7 @@
 
     <div class="show-card-bottom-date">
     <i class="fa-regular fa-calendar fa-4x" style="color: #614BF2;"></i>
-    <p><%= @activity.date.strftime("%a. %d/%m à %Hh%M") %></p>
+    <p><%= l(@activity.date, format: "%a. %d/%m à %Hh%M") %></p>
     </div>
 
     <div class="show-card-bottom-place">

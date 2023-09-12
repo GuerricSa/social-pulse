@@ -10,7 +10,7 @@
       </div>
     <% end %>
   </div>
-  
+
   <div class="chatroom-input">
     <%= simple_form_for [@chatroom, @message],
       html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
@@ -23,5 +23,4 @@
       <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
     <% end %>
   </div>
-
 </div>
