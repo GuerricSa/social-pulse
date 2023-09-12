@@ -21,6 +21,8 @@ Rails.application.configure do
   # Allow requests localtunnel
   # config.hosts.clear
 
+  config.i18n.available_locales = :fr
+
   config.hosts << /\A[a-z\d-]+\.loca\.lt\z/
 
   # Enable/disable caching. By default caching is disabled.
