@@ -16,10 +16,11 @@ class ChatroomsController < ApplicationController
     # Chatroom.joins(:registration).where("registration.user = current_user").each do |chatroom|
     #   @chatrooms << chatroom
     # end
-    
+
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
     authorize @chatroom
+    Message.where(chatroom_id: params[:id]).mark_as_read! :all, for: current_user
   end
 end
