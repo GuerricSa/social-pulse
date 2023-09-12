@@ -5,22 +5,25 @@ class ReportsController < ApplicationController
   end
 
   def new
-    @report = Report.find(params[:user_id])
     @report = Report.new
+    @defendant = User.find(params[:user_id]) 
     authorize @report
   end
 
   def create
-    @report = Report.new
-    @report.reporter_id = current_user
+    @report = Report.new(report_params)
+    @report.defendant_id = params[:user_id]
+    @report.reporter_id = current_user.id
+    @report.save
 
+    redirect_to root_path
     authorize @report
   end
 
   private
 
   def report_params
-    params.require(:report).permit(:content, :defendant_id, :reporter_id) # Remove :user_id
+    params.require(:report).permit(:status, :content, :defendant_id, :reporter_id) 
   end
 
 end

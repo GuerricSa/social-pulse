@@ -14,9 +14,11 @@
       <% end %>
     <% end %>
   </div>
+
   <div id="report-btn" data-action="click->friends#report">
-    <%= link_to new_report_path(user) do%>
+    <%= link_to user_reports_new_path(user) do %>
       <i class="fa-solid fa-triangle-exclamation"></i> Signaler 
     <% end %>
   </div>
+  
 </div>

@@ -1,0 +1,28 @@
+// 
+.form-new-report{
+  margin-top: 20px;
+
+}
+// Modification sur la partie content
+.text-field-report{
+  margin: auto;
+  display: block;
+  height: 300px;
+  width: 75%;
+  border-radius: 10px;
+}
+
+// Modification du bouton submit
+#btn-form-report{
+  margin: auto;
+  margin-top: 30px;
+  display: block;
+  width: 50%;
+  background-color: $violet;
+  color: white;
+}
+
+// Modification sur le titre
+.report-h1{
+  margin-bottom: 100px;
+}

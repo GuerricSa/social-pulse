@@ -130,7 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_073707) do
 
   create_table "reports", force: :cascade do |t|
     t.string "content"
-    t.string "status"
+    t.string "status", default: "En attente de réponse"
     t.bigint "reporter_id"
     t.bigint "defendant_id"
     t.datetime "created_at", null: false
