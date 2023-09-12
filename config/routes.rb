@@ -28,4 +28,10 @@ Rails.application.routes.draw do
   resources :chatrooms, only: %i[show index] do
     resources :messages, only: :create
   end
+
+  resources :notifications, only: :index do
+    member do
+      patch 'mark_as_read', to: "notifications#mark_as_read"
+    end
+  end
 end

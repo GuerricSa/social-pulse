@@ -101,3 +101,6 @@ end
 
 # pg search pour la searchbar
 gem "pg_search"
+
+# gem for notifications
+gem "noticed", "~> 1.6"

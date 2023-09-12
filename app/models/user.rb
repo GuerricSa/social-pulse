@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :activities, dependent: :destroy
   has_many :registrations, dependent: :destroy
+  has_many :notifications, as: :recipient, dependent: :destroy
 
   validates :first_name, :age, :email, :password, presence: true
   validates :age, numericality: { only_integer: true, in: 15..100 }

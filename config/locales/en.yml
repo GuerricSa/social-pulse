@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  # notifications:
+  #   new_registration:
+  #     # message: "Quelqu'un participe à votre activité !"
+  #     message: "%{params[:registration].user} participe à %{params[:registration].activity.title} !"
