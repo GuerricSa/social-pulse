@@ -63,6 +63,9 @@ gem 'cloudinary'
 # Geocoder for MapBox
 gem "geocoder"
 
+#french version
+gem 'rails-i18n'
+
 # unread for messages
 gem 'unread'
 
