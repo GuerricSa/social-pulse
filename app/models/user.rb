@@ -17,6 +17,9 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  # messages
+  acts_as_reader
+  
   # Favorites
   acts_as_favoritor
   acts_as_favoritable
