@@ -9,16 +9,16 @@
 
   <%# ce bloc contient les activités favorites de l'user connecté %>
   <div data-favorites-target="tab1Content" class="">
-    <% if @my_future_activities %>
-      <h2 class="mt-5">Les activités que je propose : </h2>
+    <% if @my_future_activities.size > 0 %>
+      <h2 class="mt-5 ms-5">Les activités que je propose : </h2>
       <div class="cards cards-my-activities">
         <% @my_future_activities.each do |activity| %>
           <%= render "layouts/horizontal_card_activity", activity: activity %>
         <% end %>
       </div>
     <% end %>
-    <% if @my_future_registrations %>
-      <h2 class="mt-5">Les activités auxquelles je participe : </h2>
+    <% if @my_future_registrations.size > 0 %>
+      <h2 class="mt-5 ms-5">Les activités auxquelles je participe : </h2>
       <div class="cards cards-my-activities">
         <% @my_future_registrations.each do |registration| %>
           <%= render "layouts/horizontal_card_activity", activity: registration.activity %>
@@ -29,16 +29,16 @@
 
   <%# ce bloc contient les personnes favorites de l'user connecté %>
   <div data-favorites-target="tab2Content" class="d-none">
-    <% if @my_past_activities %>
-      <h2 class="mt-5">Les activités que j'ai proposées : </h2>
+    <% if @my_past_activities.size > 0 %>
+      <h2 class="mt-5 ms-5">Les activités que j'ai proposées : </h2>
       <div class="cards cards-my-activities">
         <% @my_past_activities.each do |activity| %>
           <%= render "layouts/horizontal_card_activity", activity: activity %>
         <% end %>
       </div>
     <% end %>
-    <% if @my_past_registrations %>
-      <h2 class="mt-5">Les activités auxquelles j'ai participé : </h2>
+    <% if @my_past_registrations.size > 0 %>
+      <h2 class="mt-5 ms-5">Les activités auxquelles j'ai participé : </h2>
       <div class="cards cards-my-activities">
         <% @my_past_registrations.each do |registration| %>
           <%= render "layouts/horizontal_card_activity", activity: registration.activity %>

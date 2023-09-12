@@ -36,17 +36,19 @@ class Activity < ApplicationRecord
   # Méthode qui permet de récupérer les activités futures
   def self.all_future
     future = []
-    Activity.order(:date).each do |activity|
+    Activity.all.each do |activity|
       future << activity if activity.date >= DateTime.now
     end
+    return future.sort_by(&:date)
   end
 
   # Méthode qui permet de récupérer les activités passées
   def self.all_past
     past = []
-    Activity.order(date: :desc).each do |activity|
+    Activity.all.each do |activity|
       past << activity if activity.date < DateTime.now
     end
+    return past.sort_by(&:date).reverse
   end
 
   after_commit :add_default_photo, on: %i[create update]
