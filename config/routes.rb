@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     post '/users/:id/toggle_favorite', to: "users/sessions#toggle_favorite", as: :toggle_favorite_user
     get "/users/:id" => "users/sessions#show", as: :user
-    get 'users/:user_id/reports/new', to: 'reports#new', as: :new_report
-    post 'users/:user_id/reports', to: 'reports#create'
+
+    get 'users/:user_id/reports/new', to: 'reports#new', as: :user_reports_new
+    post 'users/:user_id/reports', to: 'reports#create', as: :user_reports
+    get "/reports", to: "reports#index"
   end
 
   resources :activities, only: %i[index show new create edit update] do

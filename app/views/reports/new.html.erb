@@ -1,8 +1,8 @@
-<h1 class="activities-h1">Signaler un utilisateur</h1>
+<h1 class="activities-h1 report-h1 ">Signaler un utilisateur</h1>
 
 <div class="form-new-report">
-  <%= simple_form_for @report do |f| %>
-    <%= f.input :content, minlength: 6, maxlength: 200, label: false, input_html: {rows: "5"}%>
+  <%= form_with model: @report, url: user_reports_path(@defendant), method: :post, remote: false do |f| %>
+    <%= f.text_field :content, minlength: 6, maxlength: 800, label: false, input_html: {rows: "5"}, class:"text-field-report"%>
+    <%= f.submit "Envoyer", id:"btn-form-report" %>
   <% end %>
-  
 </div>

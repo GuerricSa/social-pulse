@@ -6,6 +6,10 @@ class ReportPolicy < ApplicationPolicy
     # end
   end
 
+  def index?
+    true
+  end
+
   def show?
     true
   end
@@ -17,4 +21,6 @@ class ReportPolicy < ApplicationPolicy
   def create?
     true
   end
+ 
+
 end
