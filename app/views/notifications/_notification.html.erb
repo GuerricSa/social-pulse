@@ -1,3 +1,13 @@
-<div>
-  <%= link_to notification.to_notification.message, notification.to_notification.url %>
+<div class="notification <%= 'unread' if notification.unread? %>"
+    data-controller="notifications"
+    data-notifications-notification-id-value="<%= notification.id %>">
+  <div>
+    <%= cl_image_tag notification.to_notification.participant.avatar.key, crop: :fill, class: "avatar-bordered" %>
+    <%= link_to notification.to_notification.message, notification.to_notification.url %>
+  </div>
+  <% if notification.unread? %>
+    <%= button_to mark_as_read_notification_path(notification), method: :patch, data: { action: "click->notifications#mark_as_read", notifications_target: "bouton"} do %>
+      <i class="fa-regular fa-circle-check"></i>
+    <% end %>
+  <% end %>
 </div>
