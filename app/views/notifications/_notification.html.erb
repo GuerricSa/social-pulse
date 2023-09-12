@@ -1,9 +1,12 @@
 <div class="notification <%= 'unread' if notification.unread? %>"
     data-controller="notifications"
     data-notifications-notification-id-value="<%= notification.id %>">
-  <div>
+  <div class="d-flex">
     <%= cl_image_tag notification.to_notification.participant.avatar.key, crop: :fill, class: "avatar-bordered" %>
-    <%= link_to notification.to_notification.message, notification.to_notification.url %>
+    <div class="notif-info">
+      <%= link_to notification.to_notification.message, notification.to_notification.url %>
+      <p class="text-muted">Il y a <%= notification.time_ago %></p>
+    </div>
   </div>
   <% if notification.unread? %>
     <%= button_to mark_as_read_notification_path(notification), method: :patch, data: { action: "click->notifications#mark_as_read", notifications_target: "bouton"} do %>
