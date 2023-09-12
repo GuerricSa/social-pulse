@@ -26,8 +26,11 @@
 
         <%# ACCEDER AUX MESSAGES %>
         <li class="nav-item mb-5 ">
-            <%= link_to chatrooms_path, class: "nav-link" do %>
+            <%= link_to chatrooms_path, class: "nav-link nav-message" do %>
                 <%= image_tag "message.png" %>
+                <% unless Message.unread_by(current_user).size == 0 %>
+                  <div class="messages-notification"><%= Message.unread_by(current_user).size %></div>
+                <% end %>
             <% end %>
         </li>
 

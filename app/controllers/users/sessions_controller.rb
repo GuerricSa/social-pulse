@@ -35,6 +35,12 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
 
+  def ban
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to activities_path
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
