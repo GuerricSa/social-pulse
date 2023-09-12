@@ -7,6 +7,7 @@
       <div class="d-flex name-age-user">
         <h3><%= @user.first_name %> • <%= @user.age %> ans</h3>
       </div>
+      <%= render "layouts/btn_destroy" if current_user.admin %>
       <%= render "layouts/btn_follow", user: @user %>
     </div>
     <div class="border-bottom pb-3 pt-3">
