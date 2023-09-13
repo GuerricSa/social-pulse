@@ -7,6 +7,7 @@ class ReportsController < ApplicationController
   def new
     @report = Report.new
     @defendant = User.find(params[:user_id]) 
+    @user = User.find(params[:user_id])
     authorize @report
   end
 

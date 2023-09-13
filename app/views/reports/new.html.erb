@@ -1,8 +1,15 @@
-<h1 class="activities-h1 report-h1 ">Signaler un utilisateur</h1>
+<div class="info-report d-flex">
+  <h1 class="activities-h1 report-h1 ">Signaler l'utilisateur : <%= @user.first_name %></h1>
+  <div id="avatar-report"> <%= cl_image_tag @user.avatar.key, crop: :fill %></div>
+</div>
 
 <div class="form-new-report">
   <%= form_with model: @report, url: user_reports_path(@defendant), method: :post, remote: false do |f| %>
-    <%= f.text_field :content, minlength: 6, maxlength: 800, label: false, input_html: {rows: "5"}, class:"text-field-report"%>
+    <%= f.text_area :content, minlength: 6, maxlength: 800, label: false, input_html: {autocomplete:"off"}, class:"text-field-report"%>
     <%= f.submit "Envoyer", id:"btn-form-report" %>
   <% end %>
+</div>
+<div class="text-report">
+<p>"Votre anonymat est notre priorité. Lorsque vous signalez une personne malveillante, nous garantissons la stricte confidentialité de votre identité. Votre sécurité est importante pour nous, et nous prenons toutes les mesures nécessaires pour protéger votre vie privée. <br>
+Un administrateur prendra votre requête en charge et vous recontactera si des informations supplémentaires sont nécessaires."</p>
 </div>
