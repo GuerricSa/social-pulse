@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   before_action :set_notification, only: :mark_as_read
 
   def index
-    @notifications = current_user.notifications
+    @notifications = current_user.notifications.newest_first
   end
 
   def mark_as_read
