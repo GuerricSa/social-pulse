@@ -5,7 +5,9 @@
         <%= form_with url: root_path, method: :get do %>
           <%= text_field_tag :query,
             params[:query],
-            autocomplete: 'off',
+            data: {
+              autocomplete: 'off'
+            },
             class: "rounded-pill search__input",
             placeholder: "Rechercher une activité..."
         %>
