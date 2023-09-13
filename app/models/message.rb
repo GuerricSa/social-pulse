@@ -10,4 +10,19 @@ class Message < ApplicationRecord
 
   # Messages
   acts_as_readable on: :created_at
+
+  def self.my_messages(user)
+    count = 0
+    Message.unread_by(user).each do |message|
+      if message.chatroom.activity.user == user
+        count += 1
+      elsif message.chatroom.activity.registrations.each do |registration|
+        if registration.user == user
+          count += 1
+        end
+      end
+      end
+    end
+    return count
+  end
 end

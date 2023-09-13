@@ -21,6 +21,8 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
     authorize @chatroom
-    Message.where(chatroom_id: params[:id]).mark_as_read! :all, for: current_user
+    @chatroom.messages do |message|
+      message.mark_as_read! for: current_user
+    end
   end
 end

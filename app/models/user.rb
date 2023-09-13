@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :registrations, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :messages
 
   validates :first_name, :age, :email, :password, presence: true
   validates :age, numericality: { only_integer: true, in: 15..100 }
@@ -19,7 +20,7 @@ class User < ApplicationRecord
 
   # messages
   acts_as_reader
-  
+
   # Favorites
   acts_as_favoritor
   acts_as_favoritable
