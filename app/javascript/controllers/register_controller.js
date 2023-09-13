@@ -7,9 +7,11 @@ export default class extends Controller {
     activityId: String
   }
 
+  static targets = ["bouton"]
+
   initSweetalert(event) {
     event.preventDefault(); // Prevent the form to be submited after the submit button has been clicked
-
+    // console.log();
     Swal.fire({
       title: 'Confirmes-tu ta participation ?',
       text: "La personne qui propose cette activité sera avertie de ta participation.",
@@ -22,6 +24,7 @@ export default class extends Controller {
     }).then((result) => {
       if (result.isConfirmed) {
         event.target[event.type]();
+        this.boutonTarget.value = "J'annule ma participation";
         Swal.fire(
           'Incription validée !',
           "Ta participation a bien été enregistrée.",

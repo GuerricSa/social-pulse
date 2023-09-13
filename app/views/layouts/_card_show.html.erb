@@ -22,8 +22,8 @@
     </div>
 
     <div class="show-card-bottom-date">
-    <i class="fa-regular fa-calendar fa-4x" style="color: #614BF2;"></i>
-    <p><%= l(@activity.date, format: "%a. %d/%m à %Hh%M") %></p>
+    <i class="fa-solid fa-calendar-days fa-4x" style="color: #614BF2;"></i>
+    <p><%= l(@activity.date, format: "%a. %d/%m à %Hh%M") %><br>(<%= @activity.duration %> heures)</p>
     </div>
 
     <div class="show-card-bottom-place">
@@ -37,7 +37,7 @@
 
     <div class="show-card-bottom-participants">
       <div class="show-card-bottom-participants-view">
-        <p><%= @activity.registrations.size + 1 %> participants</p>
+        <p><%= @activity.registrations.size + 1 %> <%= @activity.registrations.size > 0 ? "participants" : "participant" %></p>
         <%= cl_image_tag @activity.user.avatar.key, class: "avatar-bordered", crop: "fill"%>
         <% @activity.registrations.each do |registration| %>
           <%= cl_image_tag registration.user.avatar.key, class: "avatar-bordered", crop: "fill"%>
@@ -62,7 +62,11 @@
               <i data-favorites-target="heart" class="favorite-heart fa-regular %> fa-heart fa-5x"></i>
             <% end %>
         <% end %>
-        <%= render "layouts/btn_inscription" %>
+        <% if @activity.registrations.size < @activity.participants_max || @activity.participants_max.nil? %>
+          <%= render "layouts/btn_inscription" %>
+        <% else %>
+          complet
+        <% end %>
       </div>
     </div>
   </div>
