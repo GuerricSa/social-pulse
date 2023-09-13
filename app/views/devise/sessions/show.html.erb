@@ -7,26 +7,42 @@
       <div class="d-flex name-age-user">
         <h3><%= @user.first_name %> • <%= @user.age %> ans</h3>
       </div>
-      <%= render "layouts/btn_destroy" if current_user.admin %>
-      <%= render "layouts/btn_follow", user: @user %>
+      <%= render "layouts/btn_destroy" if current_user && current_user.admin %>
+      <% unless @user == current_user %>
+        <%= render "layouts/btn_follow", user: @user %>
+      <% end %>
     </div>
     <div class="border-bottom pb-3 pt-3">
     <p class="text-wrap"><i class="fa-solid fa-quote-left"></i> <%= @user.presentation %> <i class="fa-solid fa-quote-right"></i></p>
     </div>
 
     <%# ce bloc contient les stats de l'utilisateur %>
-    <div class="d-flex border-bottom pb-3 pt-3">
-      <p><i class="fa-solid fa-chart-line" style="color: #614BF2;"></i> <%= @user.first_name %> a déjà proposé <%= @user.activities.size %> <%= @user.activities.size >=2 ? "activité".plural : "activité" %> et a participé à <%= @user.registrations.size %> <%= @user.registrations.size >=2 ? "activité".plural : "activité" %> !</p>
+    <div class="border-bottom pb-3 pt-3">
+      <p><i class="fa-regular fa-calendar-check"></i> <%= @user.first_name %> est inscrit(e) depuis le <%= l(@user.created_at, format: "%d %B %Y") %></p>
+      <p><i class="fa-solid fa-chart-line"></i>
+      <% if @user.activities.size == 1 %>
+        <%= " 1 activité proposée" %>
+      <% elsif @user.activities.size >= 2 %>
+        <%= " #{@user.activities.size} activités proposées" %>
+      <% end %>
+      <% if @user.activities.size >= 1 && @user.registrations.size >= 1 %>
+        <%= " et " %>
+      <% end %>
+      <% if @user.registrations.size == 1%>
+        <%= " 1 participation" %>
+      <% elsif @user.registrations.size >= 2 %>
+        <%= " #{@user.registrations.size} participations" %>
+      <% end %></p>
     </div>
 
     <%# ce bloc contient les activités proposées par l'user %>
     <h3 class="pt-3">Activités proposées</h3>
-    <% if @user.activities.size.zero? %>
+    <% if @activities.size.zero? %>
       <p><%= @user.first_name %> ne propose aucune activité en ce moment</p>
       <% else %>
       <%# afficher les cartes %>
       <div class="cards">
-        <% @user.activities.each do |activity| %>
+        <% @activities.each do |activity| %>
           <%= render "layouts/card_activity", activity: activity %>
         <% end %>
       </div>
