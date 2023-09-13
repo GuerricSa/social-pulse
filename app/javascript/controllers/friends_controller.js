@@ -2,17 +2,21 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="friends"
 export default class extends Controller {
-  static targets = ["followBtn"]
+  static targets = ["follow", "unfollow"]
 
   connect() {
   }
 
-  follow() {
-    if (this.followBtnTarget.innerHTML == "<p><i class='fa-solid fa-heart'></i> Suivi(e)</p>") {
-      this.followBtnTarget.innerHTML = "<p><i class='fa-regular fa-heart'>Suivre</p>"
-    } else {
-      this.followBtnTarget.innerHTML = "<p><i class='fa-solid fa-heart'></i> Suivi(e)</p>"
-    }
+  follow(event) {
+    // event.preventDefault();
+    this.followTarget.classList.add("d-none");
+    this.unfollowTarget.classList.remove("d-none");
+  }
+
+  unfollow(event) {
+    // event.preventDefault();
+    this.followTarget.classList.remove("d-none");
+    this.unfollowTarget.classList.add("d-none");
   }
 
   report() {
