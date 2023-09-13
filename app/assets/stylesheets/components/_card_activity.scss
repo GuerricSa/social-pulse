@@ -31,8 +31,8 @@
 #heart-index {
   position: absolute;
   display: block;
-  top: 10%;
-  right: 10%;
+  top: 7%;
+  right: 7%;
   z-index: 3;
 }
 
@@ -62,21 +62,23 @@
   width: 80%;
   padding-bottom: 3%;
   letter-spacing: 3px;
-  font-size: 30px;
 }
 
 .card-bottom-titles-1line {
   width: 80%;
   padding-bottom: 6%;
   letter-spacing: 3px;
-  font-size: 30px;
 }
 
 .title-card {
   width: 100%;
   letter-spacing: 3px;
-  font-size: 60px;
+  font-size: 65px;
   margin-bottom: 0;
+}
+
+.title-card p {
+  font-size: 40px;
 }
 
 .card-bottom-titles p {
@@ -84,7 +86,7 @@
 }
 
 .card-bottom p {
-  font-size: 30px;
+  font-size: 37px;
 }
 
 .card-date {
