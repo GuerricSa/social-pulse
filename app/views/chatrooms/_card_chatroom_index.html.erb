@@ -5,7 +5,7 @@
     <div class="chatroom-info">
       <h3><%= chatroom.name %></h3>
       <div class="chatroom-info-2">
-        <p><i class="fa-solid fa-calendar-days"></i> <%= chatroom.activity.date.strftime("%e %b %y à %kh%M") %></p>
+        <p><i class="fa-solid fa-calendar-days"></i> <%= l(chatroom.activity.date, format: "%A %d %B %Y à %Hh%M") %></p>
       </div>
     </div>
   </div>
