@@ -28,8 +28,8 @@
         <li class="nav-item mb-5 ">
             <%= link_to chatrooms_path, class: "nav-link nav-message" do %>
                 <%= image_tag "message.png" %>
-                <% unless current_user.nil? || Message.unread_by(current_user).size == 0 %>
-                  <div class="messages-notification"><%= Message.unread_by(current_user).size %></div>
+                <% unless current_user.nil? || Message.my_messages(current_user) == 0 %>
+                  <div class="messages-notification"><%= Message.my_messages(current_user) %></div>
                 <% end %>
             <% end %>
         </li>
@@ -40,6 +40,9 @@
                 <a href="#" class="avatar" aria-haspopup="true" aria-expanded="false" data-action="click->sidebar#open" >
                 <%= cl_image_tag current_user.avatar.key, class: "avatar-nav rounded-circle", alt: "Profil menu" %>
                 </a>
+                <% unless current_user.notifications.unread.size == 0 %>
+                  <div class="messages-notification"><%= current_user.notifications.unread.size %></div>
+                <% end %>
             </li>
 
         <% else %>

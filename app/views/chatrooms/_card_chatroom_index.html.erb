@@ -1,11 +1,14 @@
 <div class="chatrooms">
-  <div class="chatroom-photo-and-info">
+  <div class="chatroom-photo-and-info position-relative">
+    <% unless Message.my_chatrooms_messages(current_user, chatroom) == 0 %>
+      <div class="chatroom-notifications"><%= Message.my_chatrooms_messages(current_user, chatroom) %></div>
+    <% end %>
     <%= cl_image_tag chatroom.activity.photo.key, width: 160, height: 160, crop: :fill %>
     <div class="nb-participants"><%= chatroom.activity.registrations.size + 1 %> <i class="fa-solid fa-person"></i></div>
     <div class="chatroom-info">
       <h3><%= chatroom.name %></h3>
       <div class="chatroom-info-2">
-        <p><i class="fa-solid fa-calendar-days"></i> <%= chatroom.activity.date.strftime("%e %b %y à %kh%M") %></p>
+        <p><i class="fa-solid fa-calendar-days"></i> <%= l(chatroom.activity.date, format: "%A %d %B %Y à %Hh%M") %></p>
       </div>
     </div>
   </div>

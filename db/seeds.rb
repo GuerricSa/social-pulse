@@ -75,10 +75,34 @@ end
 
 # loop for activities
 if Activity.all.length < 15
-  puts "Creating activities..."
-  (15 - Activity.all.length).times do
+  puts "Creating future activities..."
+  20.times do
     activity = Activity.new(
-      date: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now + 90),
+      date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90),
+      duration: rand(1..6),
+      city: CITIES.sample,
+      cancelled: false,
+      activity_type: Activity::TYPE.sample
+    )
+    type = DESCRIPTION[activity.activity_type]
+    activity.title = type.keys.sample
+    activity.content = DESCRIPTION[activity.activity_type][activity.title]
+    activity.participants_max = rand(2..12) if activity.title.size > 8
+    activity.address = ADDRESSES[activity.city].sample
+    activity.user = User.all.sample
+    file_picture = URI.open("https://source.unsplash.com/random/?#{activity.activity_type}")
+    activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
+    activity.save!
+  end
+  puts "Creating associated chatrooms..."
+  Activity.all.each do |activity|
+    Chatroom.create(name: "#{activity.title} ##{activity.id}", activity: activity)
+  end
+  puts "Chatrooms created!"
+  puts "Creating past activities..."
+  10.times do
+    activity = Activity.new(
+      date: Faker::Time.between(from: DateTime.now - 60, to: DateTime.now),
       duration: rand(1..6),
       city: CITIES.sample,
       cancelled: false,
@@ -95,24 +119,32 @@ if Activity.all.length < 15
     activity.save!
   end
   puts "Activities created!"
-  puts "Creating associated chatrooms..."
-  Activity.all.each do |activity|
-    Chatroom.create(name: "#{activity.title} ##{activity.id}", activity: activity)
-  end
-  puts "Chatrooms created!"
 end
 
 if Registration.all.size < 20
   puts "Creating registrations..."
   Registration.destroy_all
   User.all.each do |user|
-    activities_without_user = Activity.all.reject { |act| act.user == user }
-    reg1 = Registration.new(user: user)
-    reg1.activity = activities_without_user.sample
-    reg1.save!
-    reg2 = Registration.new(user: user)
-    reg2.activity = activities_without_user.reject { |act| act == reg1.activity }.sample
-    reg2.save!
+    activities = Activity.all.reject { |act| act.user == user }.sample(2)
+    Registration.create(user: user, activity: activities[0])
+    Registration.create(user: user, activity: activities[1])
   end
   puts "All finished!"
+end
+
+if Favorite.all.size < 30
+  puts "Creating favorite activities"
+  User.all.each do |user|
+    activities_to_add = Activity.all.reject { |act| act.user == user }.sample(3)
+    user.favorite(activities_to_add[0])
+    user.favorite(activities_to_add[1])
+    user.favorite(activities_to_add[2])
+  end
+  puts "Creating favorite users"
+  User.all.each do |user|
+    users_to_follow = User.all.reject { |fav_user| fav_user == user }.sample(2)
+    user.favorite(users_to_follow[0])
+    user.favorite(users_to_follow[1])
+  end
+  puts "All favorites are ready!"
 end

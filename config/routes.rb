@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     delete '/users/:id', to: "users/sessions#ban", as: :user_ban
-    post '/users/:id/toggle_favorite', to: "users/sessions#toggle_favorite", as: :toggle_favorite_user
+    post '/users/:id/follow', to: "users/sessions#follow", as: :follow_user
+    delete '/users/:id/unfollow', to: "users/sessions#unfollow", as: :unfollow_user
     get "/users/:id" => "users/sessions#show", as: :user
     get 'users/:user_id/reports/new', to: 'reports#new', as: :user_reports_new
     post 'users/:user_id/reports', to: 'reports#create', as: :user_reports

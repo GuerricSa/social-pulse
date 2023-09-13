@@ -1,7 +1,7 @@
 .chatroom {
   background: white;
   margin: 9px auto;
-  width: 740px;
+  width: 90vw;
   // height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
@@ -42,18 +42,20 @@
 
 // To style the message itself
 .sender-style, .receiver-style {
-  width: 70%;
-  max-width: 400px;
-  border-radius: 4px;
-  padding: 8px;
+  min-width: 30vw;
+  max-width: 65vw;
+  padding: 15px 8px 20px 8px ;
   min-height: 80px;
+  margin: 15px
 }
 
 .sender-style {
+  border-radius: 8px 8px 0 8px;
   background-color: $saumon;
 }
 
 .receiver-style {
+  border-radius: 8px 8px 8px 0;
   background-color: $parme;
 }
 
@@ -68,4 +70,18 @@
   input {
     font-size: 30px;
   }
+}
+
+// notifications
+.chatroom-notifications {
+  width: 50px;
+  height: 50px;
+  background-color: $saumon;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  left: -25px;
+  color: white;
+  text-align: center;
+  font-size: 35px;
 }

@@ -14,6 +14,11 @@ class Activity < ApplicationRecord
   validates :city, presence: true
   validates :activity_type, inclusion: { in: TYPE }
 
+  # Helper for associating and destroying Notification records where(params: {post: self})
+  has_noticed_notifications
+
+  after_create :notify_favoritor
+
   # PG Search
   include PgSearch::Model
   pg_search_scope :global_search,
@@ -61,5 +66,9 @@ class Activity < ApplicationRecord
       self.photo.attach(io: file, filename: "photo-default.png", content_type: "image/png")
       self.save
     end
+  end
+
+  def notify_favoritor
+    NewActivity.with(activity: self).deliver(self.user.favoritors)
   end
 end

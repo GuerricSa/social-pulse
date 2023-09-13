@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
 
-  p {
+  p, a {
     color: $violet;
     font-weight: bold;
     font-size: 40px !important;
@@ -27,6 +27,11 @@
     letter-spacing: 1px;
     margin: 0;
   }
+
+  // a {
+  //   color: $violet;
+  //   font-size: 40px !important;
+  // }
 
   &:active {
     box-shadow: none;
@@ -40,13 +45,16 @@
   padding: 15px 30px;
   border: 1px solid $saumon;
   border-radius: 10px;
-  color: $saumon;
   box-shadow: 4px 5px 7px 0px rgba($saumon, 0.24);
   font-weight: bold;
   font-size: 40px;
   text-align: center;
   letter-spacing: 1px;
   position: relative;
+
+  a {
+    color: $saumon;
+  }
 
   &:active {
     box-shadow: none;

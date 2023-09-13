@@ -2,7 +2,11 @@
     data-controller="notifications"
     data-notifications-notification-id-value="<%= notification.id %>">
   <div class="d-flex">
-    <%= cl_image_tag notification.to_notification.participant.avatar.key, crop: :fill, class: "avatar-bordered" %>
+    <% if notification.type == "NewActivity" %>
+      <%= cl_image_tag notification.params[:activity].photo.key, crop: :fill, class: "avatar-bordered" %>
+    <% else %>
+      <%= cl_image_tag notification.to_notification.participant.avatar.key, crop: :fill, class: "avatar-bordered" %>
+    <% end %>
     <div class="notif-info">
       <%= link_to notification.to_notification.message, notification.to_notification.url %>
       <p class="text-muted">Il y a <%= notification.time_ago %></p>

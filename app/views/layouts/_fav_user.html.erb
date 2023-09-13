@@ -3,8 +3,8 @@
     <div class="d-flex align-items-center">
       <%= cl_image_tag user.avatar.key, width: 160, height: 160, crop: :fill %>
       <div id="fav-user-info">
-        <h3><%= user.first_name %></h3>
-        <p><%= user.age %> ans</p>
+        <h3><%= user.first_name %> • <%= user.age %> ans</h3>
+        <p>Inscrit(e) depuis le <%= l(user.created_at, format: "%d %B %Y") %></p>
       </div>
     </div>
     <div class="chevron-chatroom">

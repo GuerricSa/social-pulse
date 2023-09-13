@@ -1,24 +1,27 @@
 <div id="btns-follow-report" class="d-flex" data-controller="friends">
-  <div class="purple-btn me-4" data-action="click->friends#follow" data-friends-target="followBtn">
-    <% if current_user %>
-      <%= link_to toggle_favorite_user_path(user), remote: true, data: { turbo_method: :post } do %>
-        <% if current_user.favorited?(user) %>
-          <p><i class='fa-solid fa-heart'></i> Suivi(e)</p>
-        <% else %>
-          <p><i class='fa-regular fa-heart'></i> Suivre</p>
-        <% end %>
+  <% if user_signed_in? %>
+    <div class="purple-btn me-4 <%= 'd-none' if current_user.favorited?(user) %>" data-action="click->friends#follow" data-friends-target="follow">
+      <%= link_to follow_user_path(user), remote: true, data: { turbo_method: :post } do %>
+        <p><i class='fa-regular fa-heart'></i> Suivre</p>
       <% end %>
-    <% else %>
-      <%= link_to toggle_favorite_user_path(user), remote: true, data: { turbo_method: :post } do %>
-        <i class="fa-regular fa-heart"></i> Suivre
+    </div>
+    <div class="purple-btn me-4 <%= 'd-none' unless current_user.favorited?(user) %>" data-action="click->friends#unfollow" data-friends-target="unfollow">
+      <%= link_to unfollow_user_path(user), remote: true, data: { turbo_method: :delete } do %>
+        <p><i class='fa-solid fa-heart'></i> Suivi(e)</p>
       <% end %>
+    </div>
+  <% else %>
+    <div class="purple-btn me-4">
+      <%= link_to new_user_session_path, remote: true do %>
+        <p><i class='fa-regular fa-heart'></i> Suivre</p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div id="report-btn">
+    <%= link_to user_reports_new_path(user) do %>
+      <i class="fa-solid fa-triangle-exclamation"></i> Signaler
     <% end %>
   </div>
 
-  <div id="report-btn" data-action="click->friends#report">
-    <%= link_to user_reports_new_path(user) do %>
-      <i class="fa-solid fa-triangle-exclamation"></i> Signaler 
-    <% end %>
-  </div>
-  
 </div>

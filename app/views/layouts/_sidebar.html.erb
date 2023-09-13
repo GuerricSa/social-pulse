@@ -17,7 +17,7 @@
         </li>
         <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mon profil", user_path(current_user), class: "text-sidebar" %></li>
       <% end %>
-      <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mes notifications", notifications_path , class: "text-sidebar" %></li>
+      <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mes notifications (#{current_user.notifications.unread.size})", notifications_path , class: "text-sidebar" %></li>
 
       <li class="sidebar-item mt-5 ms-5 me-5 d-flex align-items-center"><%= link_to "Mes amis", favorites_path , class: "text-sidebar" %></li>
 

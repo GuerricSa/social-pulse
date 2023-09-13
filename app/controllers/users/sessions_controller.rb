@@ -2,7 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+  before_action :set_user, only: %i[follow unfollow]
   # GET /resource/sign_in
   # def new
   #   super
@@ -20,25 +20,27 @@ class Users::SessionsController < Devise::SessionsController
 
   def show
     @user = User.find(params[:id])
+    @activities = @user.activities.reject { |activity| activity.date < DateTime.now }
   end
 
-  def toggle_favorite
-    @user = User.find(params[:id])
-    if current_user
-      if current_user.favorited?(@user)
-        current_user.unfavorite(@user)
-      else
-        current_user.favorite(@user)
-      end
-    else
-      redirect_to new_user_session_path
-    end
+  def follow
+    current_user.favorite(@user) if user_signed_in?
+  end
+
+  def unfollow
+    current_user.unfavorite(@user) if user_signed_in?
   end
 
   def ban
     @user = User.find(params[:id])
     @user.destroy
     redirect_to activities_path
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
   # protected
