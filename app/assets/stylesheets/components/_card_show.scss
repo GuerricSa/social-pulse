@@ -36,6 +36,7 @@
   color: white;
   font-size: 70px;
   letter-spacing: 5px;
+  text-shadow: 1px 1px 5px #00000093;
 }
 
 .show-card-top-titles p {
@@ -83,6 +84,7 @@
   height: 25%;
   padding: 25px;
   border-bottom: 0.5px solid $saumon;
+  font-size: 35px;
 }
 
 .show-card-bottom-content p, .show-card-bottom-participants p {
@@ -94,6 +96,7 @@
   padding-bottom: 20px;
   padding-top: 20px;
   padding-left: 20px;
+  font-weight: bold;
 }
 
 .show-card-bottom-participants-view {
