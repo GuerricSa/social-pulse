@@ -4,6 +4,23 @@
 </div>
 
 <div class="form-new-report">
+
+  <div class="dropdown drop-report">
+    <button class="btn border-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Catégorie de la plainte
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Harcèlement</a></li>
+      <li><a class="dropdown-item" href="#">Comportement impoli ou inapproprié</a></li>
+      <li><a class="dropdown-item" href="#">Non-participation</a></li>
+      <li><a class="dropdown-item" href="#">Non-respect des horaires </a></li>
+      <li><a class="dropdown-item" href="#">Utilisation de photos trompeuses</a></li>
+      <li><a class="dropdown-item" href="#">Non-respect des règles de sécurité</a></li>
+      <li><a class="dropdown-item" href="#">Utilisation abusive de l'application</a></li>
+      <li><a class="dropdown-item" href="#">Vol ou perte d'objets personnels</a></li>
+    </ul>
+  </div>
+
   <%= form_with model: @report, url: user_reports_path(@defendant), method: :post, remote: false do |f| %>
     <%= f.text_area :content, minlength: 6, maxlength: 800, label: false, input_html: {autocomplete:"off"}, class:"text-field-report"%>
     <%= f.submit "Envoyer", id:"btn-form-report" %>
