@@ -10,19 +10,34 @@
   height: 300px;
   width: 75%;
   border-radius: 10px;
+
 }
 
 // Modification du bouton submit
 #btn-form-report{
   margin: auto;
-  margin-top: 30px;
+  margin-top: 50px;
   display: block;
-  width: 50%;
+  width: 35%;
+  height: 60px;
   background-color: $violet;
   color: white;
+  border-radius: 10px;
 }
 
 // Modification sur le titre
 .report-h1{
   margin-bottom: 100px;
+}
+
+// Modification text juridique
+.text-report{
+  margin-top: 150px;
+}
+
+// Modification avatar reports
+#avatar-report img{
+  border-radius: 50%;
+  width: 96px;
+  height: 96px;
 }
