@@ -36,7 +36,7 @@
 
         <%# OUVRIR LA SIDEBAR %>
         <% if user_signed_in?%>
-            <li class="nav-item mb-5 nav-profile">
+            <li class="nav-item mb-5 nav-profile position-relative">
                 <a href="#" class="avatar" aria-haspopup="true" aria-expanded="false" data-action="click->sidebar#open" >
                 <%= cl_image_tag current_user.avatar.key, class: "avatar-nav rounded-circle", alt: "Profil menu" %>
                 </a>
