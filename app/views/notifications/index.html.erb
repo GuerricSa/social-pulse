@@ -1,6 +1,8 @@
 <h1 class="activities-h1">Mes notifications</h1>
-<div id="notifications">
-  <% @notifications.each do |notification| %>
-    <%= render "notification", notification: notification %>
-  <% end %>
-</div>
+<%#= turbo_frame_tag "notifications" do %>
+  <div id="notifications-list">
+    <% @notifications.each do |notification| %>
+      <%= render "notification", notification: notification %>
+    <% end %>
+  </div>
+<%# end %>

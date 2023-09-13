@@ -40,6 +40,9 @@
                 <a href="#" class="avatar" aria-haspopup="true" aria-expanded="false" data-action="click->sidebar#open" >
                 <%= cl_image_tag current_user.avatar.key, class: "avatar-nav rounded-circle", alt: "Profil menu" %>
                 </a>
+                <% unless current_user.notifications.unread.size == 0 %>
+                  <div class="messages-notification"><%= current_user.notifications.unread.size %></div>
+                <% end %>
             </li>
 
         <% else %>
