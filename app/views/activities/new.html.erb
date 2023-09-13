@@ -1,4 +1,4 @@
-<h1 class="activities-h1">Création d'une activité</h1>
+<h1 class="activities-h1">Je propose une activité</h1>
 
 <div class="form-new-activity">
   <%= simple_form_for @activity do |f| %>
@@ -10,7 +10,7 @@
                 wrapper_html: { class: 'date-date-form-new' }
     %>
     <%= f.input :duration,
-                :label => "Durée",
+                :label => "Durée (heures)",
                 input_html: { min: '1' },
                 wrapper_html: { class: 'duration-date-form-new' }
     %>
@@ -21,7 +21,7 @@
   </div>
   <div class="type-form-new">
     <%= f.input :activity_type, :label => "Type d'activité", collection: Activity::TYPE, wrapper_html: { class: 'activity-type-form-new' } %>
-    <%= f.input :participants_max, :label => "Participants", wrapper_html: { class: 'participants-type-form-new' } %>
+    <%= f.input :participants_max, :label => "Participants (max.)", wrapper_html: { class: 'participants-type-form-new' } %>
   </div>
   <%= f.input :content, :label => "Description", input_html: { maxlength: 150, class: 'input-content-form-new' } %>
   <%= f.input :photo, :label => "Ajouter une photo", as: :file, input_html: { multiple: false } %>
