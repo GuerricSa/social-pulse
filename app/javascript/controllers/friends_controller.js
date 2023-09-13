@@ -8,19 +8,13 @@ export default class extends Controller {
   }
 
   follow(event) {
-    // event.preventDefault();
     this.followTarget.classList.add("d-none");
     this.unfollowTarget.classList.remove("d-none");
   }
 
   unfollow(event) {
-    // event.preventDefault();
     this.followTarget.classList.remove("d-none");
     this.unfollowTarget.classList.add("d-none");
-  }
-
-  report() {
-    // il faut rajouter la méthode pour aller vers le formulaire de signalement
   }
 
 }
