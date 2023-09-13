@@ -1,0 +1,21 @@
+<div>
+  <h3> Liste des signalements</h3>
+<table>
+  <thead>
+    <tr class="d-flex justify-content-between" >
+      <th>Nom</th>
+      <th>Categorie</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr class="d-flex justify-content-between" >
+        <td><%= report.reporter.first_name %></td>
+        <td><%= report.content.first(30) %></td>
+        <td><%= report.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
