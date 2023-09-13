@@ -5,11 +5,11 @@ class Registration < ApplicationRecord
   validates :activity, uniqueness: { scope: :user }
 
   # Standard association for deleting notifications when you're the recipient
-  has_many :notifications, as: :recipient, dependent: :destroy
+  # has_many :notifications, as: :recipient, dependent: :destroy
 
   # Helper for associating and destroying Notification records where(params: {post: self})
   has_noticed_notifications
-  
+
   after_create :notify_creator
 
   # Méthode qui permet de récupérer les participations futures
