@@ -9,6 +9,11 @@
   position: relative;
 }
 
+.bg-list {
+  background-color: white;
+  min-height: 83vh;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr ;

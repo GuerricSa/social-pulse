@@ -8,7 +8,7 @@
           controller: "favorites",
           action: "click->favorites#toggleColor"
           } do %>
-          <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(activity) ? 'fa-solid' : 'fa-regular' %> fa-heart fa-3x"></i>
+          <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(activity) ? 'fa-solid' : 'fa-regular' %> fa-heart fa-5x"></i>
         <% end %>
       <% else %>
         <%= link_to toggle_favorite_activity_path(activity), id: "heart-index", remote: true, data: {
@@ -16,7 +16,7 @@
           controller: "favorites",
           action: "click->favorites#toggleColor"
           } do %>
-          <i data-favorites-target="heart" class="favorite-heart fa-regular fa-heart fa-3x"></i>
+          <i data-favorites-target="heart" class="favorite-heart fa-regular fa-heart fa-5x"></i>
         <% end %>
       <% end %>
     </div>
