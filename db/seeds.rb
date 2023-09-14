@@ -153,6 +153,25 @@ if Activity.all.length < 15
     activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
     activity.save!
   end
+  puts "Creating meditations activities..."
+  3.times do
+    activity = Activity.new(
+      date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90),
+      duration: rand(1..6),
+      city: "Lille",
+      cancelled: false,
+      activity_type: "Meditation"
+    )
+    type = DESCRIPTION[activity.activity_type]
+    activity.title = type.keys.sample
+    activity.content = DESCRIPTION[activity.activity_type][activity.title]
+    activity.participants_max = rand(2..12) if activity.title.size > 8
+    activity.address = ADDRESSES[activity.city].sample
+    activity.user = User.all.sample
+    file_picture = URI.open("https://source.unsplash.com/random/?#{activity.activity_type}")
+    activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
+    activity.save!
+  end
   puts "Creating associated chatrooms..."
   Activity.all.each do |activity|
     Chatroom.create(name: "#{activity.title} ##{activity.id}", activity: activity)
