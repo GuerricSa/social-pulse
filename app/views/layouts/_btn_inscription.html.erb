@@ -1,5 +1,5 @@
 <%# ce code permet de créer le bouton "Je participe", si on est déjà inscrit, on peut supprimer notre participation %>
-<div data-controller="register" data-register-activityId-value="<%= @activity.id %>">
+<div data-controller="register" data-register-activityId-value="<%= @activity.id %>" class= <%= @my_registration ? "cancel-participation" : "form-btn-participation"%>>
   <% if @activity.user != current_user %>
     <% if @my_registration %>
       <%= link_to "J'annule ma participation", registration_path(@my_registration), class: "btn-participation",

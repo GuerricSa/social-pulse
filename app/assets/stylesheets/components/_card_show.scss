@@ -1,7 +1,7 @@
 .show-card {
   width: 90vw;
   height: 83vh;
-  border: 10px solid $saumon;
+  border: 3px solid $saumon;
   border-radius: 15px;
   overflow: hidden;
   border-radius: 50px;
@@ -22,12 +22,13 @@
 .show-card-top i {
   padding-left: 15px;
   padding-top: 15px;
+  color: $saumon;
 }
 
 .show-card-top-titles {
   text-align: end;
-  padding-bottom: 15px;
-  padding-right: 15px;
+  padding: 15px;
+  padding-left: 35px;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -64,6 +65,10 @@
   border-bottom: 0.5px solid $saumon;
 }
 
+.show-card-bottom-user {
+  position: relative;
+}
+
 .show-card-bottom-user p, .show-card-bottom-date p, .show-card-bottom-place p {
   padding-left: 15px;
   margin-bottom: 0;
@@ -84,11 +89,10 @@
   height: 25%;
   padding: 25px;
   border-bottom: 0.5px solid $saumon;
-  font-size: 35px;
 }
 
 .show-card-bottom-content p, .show-card-bottom-participants p {
-  font-size: 30px;
+  font-size: 36px;
 }
 
 .show-card-bottom-participants {
@@ -106,19 +110,17 @@
 .show-card-bottom-participants-actions {
   height: 50%;
   padding-top: 15px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: space-around;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.show-card-bottom-participants-actions a, .show-card-bottom-participants-actions i {
-  margin: auto;
+.show-card-bottom-participants-actions .btn-participation, .show-card-bottom-participants-actions .btn-complet {
+  margin-right: 40px;
+  margin-bottom: 15px;
 }
 
-.show-card-bottom-participants-actions .btn-participation-show {
-  grid-column: 2 / 5;
-}
-
-.show-card-bottom-participants-actions .btn-favorite-show {
-  grid-column: 1;
+.btn-favorite-show {
+  position: absolute;
+  right: 60px;
+  bottom: -50px;
 }
