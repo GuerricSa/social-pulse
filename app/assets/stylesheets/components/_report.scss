@@ -10,7 +10,7 @@
   height: 300px;
   width: 75%;
   border-radius: 10px;
-
+  outline-color: $violet;
 }
 
 // Modification du bouton submit
@@ -25,33 +25,23 @@
   border-radius: 10px;
 }
 
-// Modification sur le titre
-.report-h1{
-  margin-bottom: 100px;
-}
-
-// Modification sur le dropdown
-.drop-report{
-  margin-left: 124px;
-  margin-bottom: 20px;
-}
 
 // Modification text juridique
 .text-report{
-  font-size: 20px;
+  font-size: 23px;
   margin: auto;
   display: block;
-  height: 300px;
   width: 75%;
-  border-radius: 10px;
   text-align: justify;
-
-
+  height: 275px;
 }
 
 // Modification avatar reports
 #avatar-report img{
   border-radius: 50%;
-  width: 96px;
-  height: 96px;
+  width: 200px;
+  height: 200px;
+  border: 2px solid $saumon;
+  object-fit: cover;
+  margin-top: 30px;
 }

@@ -2,7 +2,7 @@
     <%= link_to "", activity_path(activity), class: "background-link" %>
     <div class="card-img" style="background-image: url(<%= cl_image_path(activity.photo.key)%>)">
       <%# ce lien permet d'ajouter ou de retirer l'activité des favoris %>
-      <% if current_user %>
+      <% if current_user && activity.user != current_user %>
         <%= link_to toggle_favorite_activity_path(activity), id: "heart-index", remote: true, data: {
           turbo_method: :post,
           controller: "favorites",
@@ -10,7 +10,7 @@
           } do %>
           <i data-favorites-target="heart" class="favorite-heart <%= current_user.favorited?(activity) ? 'fa-solid' : 'fa-regular' %> fa-heart fa-5x"></i>
         <% end %>
-      <% else %>
+      <% elsif current_user.nil? %>
         <%= link_to toggle_favorite_activity_path(activity), id: "heart-index", remote: true, data: {
           turbo_method: :post,
           controller: "favorites",
@@ -25,8 +25,8 @@
         <h2 class="title-card"><%= activity.title %></h2>
         <p><%= activity.activity_type %></p>
       </div>
-      <p><i class="fa-regular fa-calendar" style="color: #614BF2;"></i> <%= l(activity.date, format: "%A %d %B %Y à %H:%M") %></p>
-      <p class="card-location"><i class="fa-solid fa-location-dot" style="color: #614BF2;"></i> <%= activity.address %>, <%= activity.city %></p>
+      <p><i class="fa-solid fa-location-dot" style="color: #614BF2;"></i> <%= activity.address %>, <%= activity.city %></p>
+      <p class="card-date"><i class="fa-regular fa-calendar" style="color: #614BF2;"></i> <%= l(activity.date, format: "%A %-d %B %Y à %H:%M") %></p>
       <%= link_to user_path(activity.user), class: "link-avatar-index" do %>
         <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill" %>
       <% end %>
