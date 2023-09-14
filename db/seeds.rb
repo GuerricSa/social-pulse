@@ -154,9 +154,27 @@ if Activity.all.length < 15
     activity.save!
   end
   puts "Creating meditations activities..."
-  3.times do
+  2.times do
     activity = Activity.new(
       date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 90),
+      duration: rand(1..6),
+      city: "Lille",
+      cancelled: false,
+      activity_type: "Meditation"
+    )
+    type = DESCRIPTION[activity.activity_type]
+    activity.title = type.keys.sample
+    activity.content = DESCRIPTION[activity.activity_type][activity.title]
+    activity.participants_max = rand(2..12) if activity.title.size > 8
+    activity.address = ADDRESSES[activity.city].sample
+    activity.user = User.all.sample
+    file_picture = URI.open("https://source.unsplash.com/random/?#{activity.activity_type}")
+    activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
+    activity.save!
+  end
+  1.times do
+    activity = Activity.new(
+      date: DateTime.new(2023,9,15,19,0,0),
       duration: rand(1..6),
       city: "Lille",
       cancelled: false,
@@ -267,7 +285,7 @@ alexis = User.new(
   age: 25,
   presentation: "Je suis tombé dans une marmite de cocaïne quand j'étais petit.. cela peut expliquer mon hyperactivité ... Sinon, j'aime les gem.",
 )
-file = URI.open("https://www.google.com/url?sa=i&url=https%3A%2F%2Fhellomybusiness.fr%2Fqui-sommes-nous%2F&psig=AOvVaw263C_GrGWa8dezge_uESep&ust=1694782539999000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJjp6ouTqoEDFQAAAAAdAAAAABAE")
+file = URI.open("https://hellomybusiness.fr/wp-content/uploads/2021/05/1611074903506.jpeg")
 alexis.avatar.attach(io: file, filename: "avatar#{alexis.id}.png", content_type: "image/png")
 alexis.save!
 puts "Alexis is alive!"
@@ -282,11 +300,11 @@ activity_alexis = Activity.new(
   activity_type: "Equitation"
 )
 activity_alexis.title = "Allez hop au galop"
-activity_alexis.content = "J'ai toujours adoré l'équitation, aujourd'hui je osuhaite partager ma passion avec d'autres."
+activity_alexis.content = "J'ai toujours adoré l'équitation, aujourd'hui je souhaite partager ma passion avec d'autres."
 activity_alexis.participants_max = 6
 activity_alexis.address = "8 Rue de la Clef"
 activity_alexis.user = User.find_by(first_name: "Alexis")
-file_picture = URI.open("https://www.google.com/url?sa=i&url=https%3A%2F%2Fchevaux-passion.com%2Fproducts%2Faffiche-poster-imprime-hd-chevaux-au-galop-sur-le-sable&psig=AOvVaw1US0_svyz-FBzTOxlUSi6C&ust=1694783053986000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCLDDg4GVqoEDFQAAAAAdAAAAABAE")
+file_picture = URI.open("https://chevaux-passion.com/cdn/shop/products/AffichePosterimprimeHD-Chevauxaugalopsurlesable_1024x1024.jpg?v=1613574752")
 activity_alexis.photo.attach(io: file_picture, filename: "photo#{activity_alexis.id}.png", content_type: "image/png")
 activity_alexis.save!
 # puts "Creating chatroom alexis..."
