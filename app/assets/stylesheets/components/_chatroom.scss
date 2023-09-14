@@ -2,11 +2,13 @@
   background: white;
   margin: 9px auto;
   width: 90vw;
-  // height: calc(100vh - 75px);
+  height: 86vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-grow: 1;
+  position: relative;
+
 
   h1 {
     border-bottom: 1px solid $gray-200;
@@ -22,6 +24,10 @@
     max-height: 75vh; /* Hauteur maximale pour la zone de messages avec défilement */
     overflow-y: scroll;
     padding: 1rem;
+  }
+
+  .messages p {
+    font-size: 30px;
   }
 
   #new_message {
@@ -57,13 +63,15 @@
 .receiver-style {
   border-radius: 8px 8px 8px 0;
   background-color: $parme;
+  margin-left: 30px;
 }
 
 // style de l'input pour envoyer un message
 .chatroom-input {
   // height: 50px;
-  // position: sticky;
-  // bottom: 0px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
   // padding-bottom: 150px;
   background-color: white;
 
