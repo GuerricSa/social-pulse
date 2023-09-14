@@ -62,7 +62,7 @@
         <% end %>
       </div>
       <div class="show-card-bottom-participants-actions">
-        <% if @activity.registrations.size < @activity.participants_max || @activity.participants_max.nil? %>
+        <% if @activity.participants_max.nil? || @activity.registrations.size < @activity.participants_max %>
           <%= render "layouts/btn_inscription" %>
         <% else %>
           <button class="btn-complet" disabled>complet</button>
