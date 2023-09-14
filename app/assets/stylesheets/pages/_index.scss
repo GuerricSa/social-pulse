@@ -3,6 +3,7 @@
 @import "user";
 @import "register_confirmation";
 @import "chatrooms";
+@import "my-activities";
 
 
 .list-or-map {
@@ -43,8 +44,4 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
-}
-
-#my-activities {
-  padding-bottom: 110px;
 }
