@@ -21,12 +21,12 @@
       <% end %>
     </div>
     <div class="card-bottom">
-      <div class=<%= activity.title.size < 29 ? 'card-bottom-titles-1line' : 'card-bottom-titles-2lines' %>>
+      <div class=<%= activity.title.size < 22 ? 'card-bottom-titles-1line' : 'card-bottom-titles-2lines' %>>
         <h2 class="title-card"><%= activity.title %></h2>
         <p><%= activity.activity_type %></p>
       </div>
-      <p><i class="fa-solid fa-location-dot" style="color: #614BF2;"></i> <%= activity.address %>, <%= activity.city %></p>
-      <p class="card-date"><i class="fa-regular fa-calendar" style="color: #614BF2;"></i> <%= l(activity.date, format: "%A %d %B %Y à %H:%M") %></p>
+      <p><i class="fa-regular fa-calendar" style="color: #614BF2;"></i> <%= l(activity.date, format: "%A %d %B %Y à %H:%M") %></p>
+      <p class="card-location"><i class="fa-solid fa-location-dot" style="color: #614BF2;"></i> <%= activity.address %>, <%= activity.city %></p>
       <%= link_to user_path(activity.user), class: "link-avatar-index" do %>
         <%= cl_image_tag activity.user.avatar.key, class: "avatar-bordered avatar-index", crop: "fill" %>
       <% end %>

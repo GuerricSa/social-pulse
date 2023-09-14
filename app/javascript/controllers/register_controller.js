@@ -13,6 +13,14 @@ export default class extends Controller {
     event.preventDefault(); // Prevent the form to be submited after the submit button has been clicked
     // console.log();
     Swal.fire({
+      customClass: {
+        popup: 'register-popup',
+        icon: 'register-icon',
+        title: 'register-title',
+        htmlContainer: 'register-text',
+        icon: 'register-icon',
+        actions: 'register-buttons'
+      },
       title: 'Confirmes-tu ta participation ?',
       text: "La personne qui propose cette activité sera avertie de ta participation.",
       icon: 'question',
