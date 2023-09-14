@@ -40,7 +40,7 @@
 }
 
 .form-new-activity select option {
-  font-size: 15px;
+  font-size: 12px;
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -67,9 +67,12 @@
   margin-top: 30px;
   padding: 10px 20px;
   background-color: $saumon;
-  border-radius: 59px;
+  border-radius: 10px;
   text-align: center;
-  font-size: 40px;
   color: white;
-  box-shadow: 3px 5px 4px 1px #0000002b;;
+  box-shadow: 3px 5px 4px 1px #0000002b;
+}
+
+.btn-submit-activity-form input {
+  font-size: 50px;
 }
