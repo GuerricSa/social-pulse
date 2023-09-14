@@ -275,3 +275,4 @@ activity_alexis.save!
 puts "Creating Guerric registration for Alexis Activity..."
 Registration.create(user: User.find_by(first_name: "Guerric"), activity: activity_alexis)
 Registration.create(user: User.all.sample, activity: activity_alexis)
+
