@@ -20,7 +20,9 @@
     <div data-index-activities-target="tab1Content" class="bg-list">
       <div class="cards">
         <% @activities.each do |activity| %>
-        <%= render "layouts/card_activity", activity: activity %>
+          <% if activity.date >= DateTime.now %>
+            <%= render "layouts/card_activity", activity: activity %>
+          <% end %>
         <% end %>
       </div>
     </div>
