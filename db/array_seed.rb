@@ -196,11 +196,11 @@ DESCRIPTION = {
 },
 # ok
 "Sport" => {
-  "Match de Basketball Amical" => "Rejoignez-nous au terrain de basket du parc ce samedi après-midi. Marquez des paniers, défendez vaillamment et partagez des fous rires à chaque dribble. Tout le monde est bienvenu, que vous soyez un as du basket ou simplement là pour vous amuser.",
+  "Match de Basketball Amical" => "Rejoignez-nous au terrain de basket du parc ce samedi après-midi. Marquez des paniers, défendez vaillamment et partagez des fous rires à chaque dribble. ",
   "Yoga en Plein Air" => "Ressentez la connexion avec la nature lors de nos séances de yoga en plein air chaque dimanche matin. Nous pratiquons sous le soleil, respirons l'air frais et trouvons la paix intérieure ensemble.",
-  "Course à Pied en Groupe" => "Laissez le stress derrière vous et rejoignez notre groupe de course à pied. Nous courons ensemble pour le plaisir, nous motivant mutuellement à atteindre de nouveaux sommets, que ce soit sur la piste ou en pleine nature.",
-  "Séance d'Entraînement en Circuit" => "Notre jardin se transforme en salle de sport en plein air chaque mardi soir. Nous faisons des burpees, des pompes et bien plus encore. Apportez votre énergie et votre enthousiasme, et nous vous fournirons un excellent entraînement.",
-  "Tournoi de Tennis en Double" => "Notre club de tennis organise un tournoi amical en double ce week-end. Apportez votre raquette et rejoignez-nous pour des matchs passionnants. Que vous soyez novice ou expert, l'important est de s'amuser sur le court."
+  "Course à Pied en Groupe" => "Laissez le stress derrière vous et rejoignez notre groupe de course à pied. Nous courons ensemble pour le plaisir, nous motivant mutuellement à atteindre de nouveaux sommets.",
+  "Séance d'Entraînement en Circuit" => "Notre jardin se transforme en salle de sport en plein air chaque mardi soir. Nous faisons des burpees, des pompes et bien plus encore.",
+  "Tournoi de Tennis en Double" => "Notre club de tennis organise un tournoi amical en double ce week-end. Apportez votre raquette et rejoignez-nous pour des matchs passionnants."
 },
 # ok
 "Musique" => {

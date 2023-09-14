@@ -8,9 +8,9 @@ class Activity < ApplicationRecord
   has_one_attached :photo
 
   validates :title, presence: true
-  validates :title, length: { maximum: 35 }
+  validates :title, length: { maximum: 50 }
   validates :content, presence: true
-  validates :content, length: { maximum: 170 }
+  validates :content, length: { maximum: 700 }
   validates :date, presence: true, uniqueness: { scope: :user }
   validates :address, presence: true
   validates :city, presence: true
