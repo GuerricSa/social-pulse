@@ -23,10 +23,12 @@
     </div>
     <%= f.input :content, :label => "Description", input_html: { maxlength: 150, class: 'input-content-form-new' } %>
     <%= f.input :photo, :label => "Ajouter une photo", as: :file, input_html: { multiple: false } %>
-    <% if activity.new_record? %>
-      <%= f.button :submit, "Créer l'activité" , class: "btn-form-new"%>
-    <% else %>
-      <%= f.button :submit, "Modifier l'activité" , class: "btn-form-new"%>
-    <% end %>
+    <div class="btn-submit-activity-form">
+      <% if activity.new_record? %>
+        <%= f.button :submit, "Créer l'activité" , class: "btn-form-new"%>
+      <% else %>
+        <%= f.button :submit, "Modifier l'activité" , class: "btn-form-new"%>
+      <% end %>
+    </div>
   <% end %>
 </div>
