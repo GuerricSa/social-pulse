@@ -6,6 +6,7 @@ class ActivitiesController < ApplicationController
     @activities = policy_scope(Activity)
 
     if params[:query].present?
+      @params = params[:query]
       @activities = Activity.global_search(params[:query]).order(:date)
     else
       @activities = Activity.all

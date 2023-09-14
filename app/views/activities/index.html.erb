@@ -1,4 +1,9 @@
-<h1 class="activities-h1">Activités autour de chez toi</h1>
+<% if @params %>
+  <h1 class="activities-h1">Résultats pour <%= @params %></h1>
+<% else %>
+  <h1 class="activities-h1">Quel sera ta prochaine activité ?</h1>
+<% end %>
+
 
 <div data-controller="index-activities">
 
