@@ -9,7 +9,6 @@ class ActivitiesController < ApplicationController
       @activities = Activity.global_search(params[:query]).order(:date)
     else
       @activities = Activity.all
-      # @activities = Activity.all_future
     end
 
     # Pour Geocode / MapBox

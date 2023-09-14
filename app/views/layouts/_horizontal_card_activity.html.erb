@@ -4,7 +4,7 @@
       <%= cl_image_tag activity.photo.key, width: 160, height: 160, crop: :fill %>
       <div id="fav-user-info">
         <h3><%= activity.title %></h3>
-        <p><%= l(activity.date, format: "%a. %d/%m à %Hh%M") %></p>
+        <p><%= l(activity.date, format: "%a. %d/%m à %Hh%M") %> à <%= activity.city %></p>
       </div>
     </div>
     <div class="chevron-chatroom">
