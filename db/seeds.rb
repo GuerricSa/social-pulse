@@ -148,7 +148,7 @@ if Activity.all.length < 15
     activity.content = DESCRIPTION[activity.activity_type][activity.title]
     activity.participants_max = rand(2..12) if activity.title.size > 8
     activity.address = ADDRESSES[activity.city].sample
-    activity.user = User.all.sample
+    activity.user = User.all.reject { |user| user.first_name == "Paul" }.sample
     file_picture = URI.open("https://source.unsplash.com/random/?#{activity.activity_type}")
     activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
     activity.save!
@@ -167,7 +167,7 @@ if Activity.all.length < 15
     activity.content = DESCRIPTION[activity.activity_type][activity.title]
     activity.participants_max = rand(2..12) if activity.title.size > 8
     activity.address = ADDRESSES[activity.city].sample
-    activity.user = User.all.sample
+    activity.user = User.all.reject { |user| user.first_name == "Paul" }.sample
     file_picture = URI.open("https://source.unsplash.com/random/?#{activity.activity_type}")
     activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
     activity.save!
@@ -185,7 +185,7 @@ if Activity.all.length < 15
     activity.content = DESCRIPTION[activity.activity_type][activity.title]
     activity.participants_max = rand(2..12) if activity.title.size > 8
     activity.address = ADDRESSES[activity.city].sample
-    activity.user = User.all.sample
+    activity.user = User.all.reject { |user| user.first_name == "Paul" }.sample
     file_picture = URI.open("https://source.unsplash.com/random/?#{activity.activity_type}")
     activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
     activity.save!
