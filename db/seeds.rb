@@ -79,7 +79,7 @@ unless User.find_by(first_name: "Paul")
     age: 97,
     presentation: "J'aime la cuisine, la nourriture et la cuisine"
   )
-  file = URI.open("https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.lemde.fr%2F2018%2F01%2F20%2F3%2F0%2F7360%2F4906%2F1440%2F960%2F60%2F0%2Fc04db66_5761802-01-06.jpg&tbnid=4XYLx0X9tTgbdM&vet=12ahUKEwiB076nlaqBAxVPsCcCHa5ACuUQMygDegQIARB6..i&imgrefurl=https%3A%2F%2Fwww.lemonde.fr%2Fdisparitions%2Farticle%2F2018%2F01%2F20%2Fpaul-bocuse-figure-de-la-gastronomie-francaise-est-mort_5244600_3382.html&docid=S_Z-Z0yuE7BrjM&w=1440&h=960&q=paul%20bocuse&ved=2ahUKEwiB076nlaqBAxVPsCcCHa5ACuUQMygDegQIARB6")
+  file = URI.open("https://www.mangeonsbien.com/wp-content/uploads/2018/01/Bocuse.jpg")
   paul.avatar.attach(io: file, filename: "avatar#{paul.id}.png", content_type: "image/png")
   paul.save
   puts "Paul is alive!"
@@ -231,11 +231,11 @@ unless User.find_by(first_name: "Guerric")
     first_name: "Guerric",
     password: "123456789",
     age: 29,
-    presentation: "J'ai récemment découvert la cueillette de pissenlit, c'est maintenant ma passion! Je serai cependant ravi de découvrir d'autres activités ainsi que d'autres personnes.",
+    presentation: "J'ai récemment découvert la cueillette de pissenlit, c'est maintenant ma passion!"
   )
   file = URI.open("https://scontent-cdg4-3.cdninstagram.com/v/t51.2885-19/299359173_8139885692718815_5517122244597947946_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-cdg4-3.cdninstagram.com&_nc_cat=111&_nc_ohc=UChXjBBN8ZwAX9-tZWE&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDZLu72Xunh23lsuOXztHUuHajWes7WeD-qr6Z9CdI_QA&oe=6505E412&_nc_sid=8b3546")
   guerric.avatar.attach(io: file, filename: "avatar#{guerric.id}.png", content_type: "image/png")
-  guerric.save
+  guerric.save!
   puts "Guerric is alive!"
 end
 
@@ -250,7 +250,7 @@ alexis = User.new(
 )
 file = URI.open("https://www.google.com/url?sa=i&url=https%3A%2F%2Fhellomybusiness.fr%2Fqui-sommes-nous%2F&psig=AOvVaw263C_GrGWa8dezge_uESep&ust=1694782539999000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJjp6ouTqoEDFQAAAAAdAAAAABAE")
 alexis.avatar.attach(io: file, filename: "avatar#{alexis.id}.png", content_type: "image/png")
-alexis.save
+alexis.save!
 puts "Alexis is alive!"
 
 # Alexis activity
