@@ -2,7 +2,7 @@
     data-controller="notifications"
     data-notifications-notification-id-value="<%= notification.id %>">
   <div class="d-flex">
-    <% if notification.type == "NewActivity" %>
+    <% if notification.type == "NewActivity" || notification.type == "ActivityUpdate" %>
       <%= cl_image_tag notification.params[:activity].photo.key, crop: :fill, class: "avatar-bordered" %>
     <% else %>
       <%= cl_image_tag notification.to_notification.participant.avatar.key, crop: :fill, class: "avatar-bordered" %>

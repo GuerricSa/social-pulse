@@ -13,5 +13,7 @@
         <%= f.submit "Je participe !", class: "btn-participation", data: { register_target: "bouton" } %>
       <% end %>
     <% end %>
+  <% else %>
+    <%= link_to "Modifier", edit_activity_path(@activity), class: "btn-participation" %>
   <% end %>
 </div>

@@ -47,10 +47,14 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    authorize @activity
   end
 
   def update
+    authorize @activity
     @activity = Activity.update(activity_params)
+    ActivityUpdate.with(activity: @activity).deliver(find_participants(@activity))
+    redirect_to activity_path(@activity)
   end
 
   def my_activities
@@ -95,5 +99,13 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(:title, :content, :date, :duration, :address, :city, :participants_max, :activity_type, :photo)
+  end
+
+  def find_participants(activity)
+    participants = []
+    activity.registrations.each do |registration|
+      participants << registration.user
+    end
+    return participants
   end
 end
