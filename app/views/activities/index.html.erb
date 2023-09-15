@@ -24,7 +24,7 @@
 
     <div data-index-activities-target="tab1Content" class="bg-list">
       <div class="cards">
-        <% @activities.each do |activity| %>
+        <% @activities.sort_by { |act| act.date }.each do |activity| %>
           <% if activity.date >= DateTime.now %>
             <%= render "layouts/card_activity", activity: activity %>
           <% end %>
