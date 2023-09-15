@@ -2,7 +2,7 @@
 <div data-controller="register" data-register-activityId-value="<%= @activity.id %>" class= <%= @my_registration ? "cancel-participation" : "form-btn-participation"%>>
   <% if @activity.user != current_user %>
     <% if @my_registration %>
-      <%= link_to "J'annule ma participation", registration_path(@my_registration), class: "btn-participation",
+      <%= link_to "J'annule ma participation", booking_path(@my_registration), class: "btn-participation",
       data: { turbo_method: :delete, turbo_confirm: "Tu confirmes l'annulation de ta participation ?" } %>
     <% else %>
       <%= form_for [@activity, @registration], html: {
