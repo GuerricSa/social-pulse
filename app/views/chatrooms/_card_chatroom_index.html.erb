@@ -4,7 +4,7 @@
       <div class="chatroom-notifications"><%= Message.my_chatrooms_messages(current_user, chatroom) %></div>
     <% end %>
     <%= cl_image_tag chatroom.activity.photo.key, width: 160, height: 160, crop: :fill %>
-    <div class="nb-participants"><%= chatroom.activity.registrations.size + 1 %> <i class="fa-solid fa-person"></i></div>
+    <div class="nb-participants"><%= chatroom.activity.bookings.size + 1 %> <i class="fa-solid fa-person"></i></div>
     <div class="chatroom-info">
       <h3><%= chatroom.name %></h3>
       <div class="chatroom-info-2">

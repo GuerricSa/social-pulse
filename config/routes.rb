@@ -11,10 +11,10 @@ Rails.application.routes.draw do
     post 'users/:user_id/reports', to: 'reports#create', as: :user_reports
   end
   resources :reports, only: %i[index]
-  
+
   resources :activities, only: %i[index show new create edit update] do
     get "/duplicate", to: "activities#duplicate"
-    resources :registrations, only: :create
+    resources :bookings, only: :create
     member do
       post 'toggle_favorite', to: "activities#toggle_favorite"
     end
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get "my_activities", to: "activities#my_activities", as: :my_activities
 
-  resources :registrations, only: :destroy
+  resources :bookings, only: :destroy
 
   resources :favorites, only: :index
 

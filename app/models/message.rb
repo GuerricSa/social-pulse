@@ -16,7 +16,7 @@ class Message < ApplicationRecord
     Message.unread_by(user).each do |message|
       if message.chatroom.activity.user == user
         count += 1
-      elsif message.chatroom.activity.registrations.each do |registration|
+      elsif message.chatroom.activity.bookings.each do |registration|
         if registration.user == user
           count += 1
         end
@@ -31,7 +31,7 @@ class Message < ApplicationRecord
     Message.unread_by(user).each do |message|
       if message.chatroom.activity.user == user && message.chatroom == chatroom
         count += 1
-      elsif message.chatroom.activity.registrations.each do |registration|
+      elsif message.chatroom.activity.bookings.each do |registration|
         if registration.user == user && message.chatroom == chatroom
           count += 1
         end

@@ -217,13 +217,13 @@ if Activity.all.length < 15
   puts "Activities created!"
 end
 
-if Registration.all.size < 20
-  puts "Creating registrations..."
-  Registration.destroy_all
+if Booking.all.size < 20
+  puts "Creating Bookings..."
+  Booking.destroy_all
   User.all.each do |user|
     activities = Activity.all.reject { |act| act.user == user }.sample(2)
-    Registration.create(user: user, activity: activities[0])
-    Registration.create(user: user, activity: activities[1])
+    Booking.create(user: user, activity: activities[0])
+    Booking.create(user: user, activity: activities[1])
   end
   puts "All finished!"
 end
@@ -309,7 +309,6 @@ activity_alexis.photo.attach(io: file_picture, filename: "photo#{activity_alexis
 activity_alexis.save!
 # puts "Creating chatroom alexis..."
 # Chatroom.create(name: "#{activity_alexis.title} ##{activity_alexis.id}", activity: activity_alexis)
-puts "Creating Guerric registration for Alexis Activity..."
-Registration.create(user: User.find_by(first_name: "Guerric"), activity: activity_alexis)
-Registration.create(user: User.all.sample, activity: activity_alexis)
-
+puts "Creating Guerric Booking for Alexis Activity..."
+Booking.create(user: User.find_by(first_name: "Guerric"), activity: activity_alexis)
+Booking.create(user: User.all.sample, activity: activity_alexis)

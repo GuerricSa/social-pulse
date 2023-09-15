@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :activities, dependent: :destroy
-  has_many :registrations, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
   has_many :messages
 

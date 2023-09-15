@@ -25,8 +25,8 @@ class ActivitiesController < ApplicationController
 
   def show
     authorize @activity
-    @registration = Registration.new(activity: @activity, user: current_user)
-    @my_registration = Registration.find_by(user: current_user, activity: @activity)
+    @registration = Booking.new(activity: @activity, user: current_user)
+    @my_registration = Booking.find_by(user: current_user, activity: @activity)
   end
 
   def new
@@ -62,8 +62,8 @@ class ActivitiesController < ApplicationController
     @my_past_activities = Activity.all_past.select { |act| act.user == current_user }
     authorize @my_future_activities, policy_class: ActivityPolicy
     authorize @my_past_activities, policy_class: ActivityPolicy
-    @my_future_registrations = Registration.all_future.select { |reg| reg.user == current_user }
-    @my_past_registrations = Registration.all_past.select { |reg| reg.user == current_user }
+    @my_future_registrations = Booking.all_future.select { |reg| reg.user == current_user }
+    @my_past_registrations = Booking.all_past.select { |reg| reg.user == current_user }
     # authorize @my_registrations
   end
 
@@ -103,7 +103,7 @@ class ActivitiesController < ApplicationController
 
   def find_participants(activity)
     participants = []
-    activity.registrations.each do |registration|
+    activity.bookings.each do |registration|
       participants << registration.user
     end
     return participants

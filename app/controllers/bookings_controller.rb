@@ -1,8 +1,8 @@
-class RegistrationsController < ApplicationController
+class BookingsController < ApplicationController
   before_action :set_activity, only: %i[create]
 
   def create
-    @registration = Registration.new
+    @registration = Booking.new
     authorize @registration
     @registration.user = current_user
     @registration.activity = @activity
@@ -12,7 +12,7 @@ class RegistrationsController < ApplicationController
   end
 
   def destroy
-    @registration = Registration.find(params[:id])
+    @registration = Booking.find(params[:id])
     authorize @registration
     @registration.destroy
     redirect_to activity_path(@registration.activity), status: :see_other

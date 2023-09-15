@@ -55,14 +55,14 @@
 
     <div class="show-card-bottom-participants">
       <div class="show-card-bottom-participants-view">
-        <p><%= @activity.registrations.size + 1 %> <%= @activity.registrations.size > 0 ? "participants" : "participant" %></p>
+        <p><%= @activity.bookings.size + 1 %> <%= @activity.bookings.size > 0 ? "participants" : "participant" %></p>
         <%= cl_image_tag @activity.user.avatar.key, class: "avatar-bordered", crop: "fill"%>
-        <% @activity.registrations.each do |registration| %>
+        <% @activity.bookings.each do |registration| %>
           <%= cl_image_tag registration.user.avatar.key, class: "avatar-bordered", crop: "fill"%>
         <% end %>
       </div>
       <div class="show-card-bottom-participants-actions">
-        <% if @activity.participants_max.nil? || @activity.registrations.size < @activity.participants_max %>
+        <% if @activity.participants_max.nil? || @activity.bookings.size < @activity.participants_max %>
           <%= render "layouts/btn_inscription" %>
         <% else %>
           <button class="btn-complet" disabled>complet</button>

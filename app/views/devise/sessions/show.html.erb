@@ -24,13 +24,13 @@
       <% elsif @user.activities.size >= 2 %>
         <%= " #{@user.activities.size} activités proposées" %>
       <% end %>
-      <% if @user.activities.size >= 1 && @user.registrations.size >= 1 %>
+      <% if @user.activities.size >= 1 && @user.bookings.size >= 1 %>
         <%= " et " %>
       <% end %>
-      <% if @user.registrations.size == 1%>
+      <% if @user.bookings.size == 1%>
         <%= " 1 participation" %>
-      <% elsif @user.registrations.size >= 2 %>
-        <%= " #{@user.registrations.size} participations" %>
+      <% elsif @user.bookings.size >= 2 %>
+        <%= " #{@user.bookings.size} participations" %>
       <% end %></p>
     </div>
 

@@ -2,7 +2,7 @@ class ChatroomsController < ApplicationController
   def index
     @chatrooms = []
     activity_id = []
-    current_user.registrations.each do |registration|
+    current_user.bookings.each do |registration|
       activity_id << registration.activity_id
     end
     Chatroom.all.each do |chatroom|
@@ -13,9 +13,6 @@ class ChatroomsController < ApplicationController
       end
     end
   end
-    # Chatroom.joins(:registration).where("registration.user = current_user").each do |chatroom|
-    #   @chatrooms << chatroom
-    # end
 
   def show
     @chatroom = Chatroom.find(params[:id])
