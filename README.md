@@ -6,7 +6,7 @@ Découvrez des activités locales passionnantes avec Social Pulse. Inscrivez-vou
 Social Pulse est une application web (mobile-first) codée avec Ruby on Rails en deux semaines en tant que projet final du bootcamp du Wagon.
 
 
-![Logo](app/images/icons/favicon-32x32.png)
+![Logo](app/assets/images/icons/favicon-96x96.png)
 
 
 ## Demo
