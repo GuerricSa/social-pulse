@@ -172,7 +172,7 @@ if Activity.all.length < 15
     activity.photo.attach(io: file_picture, filename: "photo#{activity.id}.png", content_type: "image/png")
     activity.save!
   end
-  1.times do
+  2.times do
     activity = Activity.new(
       date: DateTime.new(2023,9,15,19,0,0),
       duration: rand(1..6),
